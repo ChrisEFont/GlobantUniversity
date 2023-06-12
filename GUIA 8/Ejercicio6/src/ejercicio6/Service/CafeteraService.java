@@ -14,7 +14,9 @@ import java.util.Scanner;
  */
 public class CafeteraService {
     public Cafetera crearCafetera(){
-        Cafetera cafeteraS = new Cafetera();
+        Scanner input = new Scanner(System.in);
+        System.out.println("Ingrese la capacidad maxima de la cafetera");
+        Cafetera cafeteraS = new Cafetera(input.nextInt());
         return cafeteraS;
     }
     

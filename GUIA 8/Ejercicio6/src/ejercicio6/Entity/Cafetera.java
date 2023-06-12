@@ -10,13 +10,13 @@ package ejercicio6.Entity;
  * @author chris
  */
 public class Cafetera {
-    private int capacidadMaxima=1000, cantidadActual=0;
+    private final int capacidadMaxima; int cantidadActual=0;
 
-    public Cafetera() {
-    }
+//    public Cafetera() {
+//    }
     
     
-    public Cafetera(int capacidadMaxima, int cantidadActual) {
+    public Cafetera(int capacidadMaxima) {
         this.capacidadMaxima=capacidadMaxima;
         this.cantidadActual=cantidadActual;
     }
@@ -25,9 +25,9 @@ public class Cafetera {
         return capacidadMaxima;
     }
 
-    public void setCapacidadMaxima(int capacidadMaxima) {
-        this.capacidadMaxima = capacidadMaxima;
-    }
+//    public void setCapacidadMaxima(int capacidadMaxima) {
+//        this.capacidadMaxima = capacidadMaxima;
+//    }
 
     public int getCantidadActual() {
         return cantidadActual;
