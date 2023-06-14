@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio7.Entity.Service;
+package ejercicio7.Service;
 
 import ejercicio7.Entity.Persona;
 import java.util.Scanner;

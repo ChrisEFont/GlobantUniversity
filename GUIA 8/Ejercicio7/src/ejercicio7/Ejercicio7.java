@@ -6,7 +6,7 @@
 package ejercicio7;
 
 import ejercicio7.Entity.Persona;
-import ejercicio7.Entity.Service.PersonaService;
+import ejercicio7.Service.PersonaService;
 
 /**
  *
