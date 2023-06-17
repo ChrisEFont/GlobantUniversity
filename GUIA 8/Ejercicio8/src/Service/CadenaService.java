@@ -67,7 +67,8 @@ public class CadenaService {
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese la letra con la que desea encontrar");
         String letra = input.nextLine();
-        cadena.contiene(letra);
+        System.out.println(cadena.contiene(letra));
+        
     }
     
     public void toString(Cadena cadena){
