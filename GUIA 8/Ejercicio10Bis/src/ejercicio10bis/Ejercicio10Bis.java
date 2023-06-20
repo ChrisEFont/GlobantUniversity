@@ -27,6 +27,10 @@ public class Ejercicio10Bis {
             arregloA[i] = (float) Math.round(Math.random() * 100);
         }
         
+//        for(float i: arregloA){
+//            i = 5f;
+//        }
+        
         Arrays.sort(arregloA);
         
         arregloB=Arrays.copyOfRange(arregloA, 0, 20);
