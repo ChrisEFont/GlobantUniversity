@@ -28,6 +28,16 @@ public class Partida {
         return nvoAhorcado.getIntentosPermitidos()>0 && nvoAhorcado.getLetrasEncontradas()<nvoAhorcado.getPalabraSecreta().length;
     }
     
+    public boolean verificarLetra(Ahorcado nvoAhorcado, String letra){
+        boolean letraEncontrada=false;
+        for(int i=0; i<nvoAhorcado.getPalabraSecreta().length; i++){
+            if(letra.toUpperCase().equals(nvoAhorcado.getPalabraEnJuego()[i])){
+                letraEncontrada=true;
+            }
+        }
+        return letraEncontrada;
+    }
+    
     public boolean intentar(Ahorcado nvoAhorcado, String letra) {
         nvoAhorcado.intento(letra);
         return true;

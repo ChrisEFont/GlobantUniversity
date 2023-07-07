@@ -19,6 +19,8 @@ public class EjerccioExtra6LogicaPropia {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        System.out.println("Bienvenido al ahorcado");
         PartidaService nvoServicio = new PartidaService();
         Partida nvaPartida = nvoServicio.crearPartida();
         Ahorcado nvoAhorcado = nvoServicio.iniciarPartida(nvaPartida);

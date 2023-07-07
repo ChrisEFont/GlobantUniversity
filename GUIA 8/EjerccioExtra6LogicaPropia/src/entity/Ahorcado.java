@@ -22,13 +22,17 @@ public class Ahorcado {
         this.palabraEnJuego = new String[palabraSecreta.length()];
         Arrays.fill(palabraEnJuego, "_");
         for(int i=0; i<palabraSecreta.length(); i++){
-            this.palabraSecreta[i]=palabraSecreta.substring(i, i+1);            
+            this.palabraSecreta[i]=palabraSecreta.substring(i, i+1).toUpperCase();            
         }        
     }
 
     public String[] getPalabraSecreta() {
         return palabraSecreta;
     }
+
+    public String[] getPalabraEnJuego() {
+        return palabraEnJuego;
+    }    
 
     public int getLetrasEncontradas() {
         return letrasEncontradas;
@@ -50,7 +54,7 @@ public class Ahorcado {
     public boolean buscarLetra(String letra){
         boolean check=false;
         for(int i=0; i<this.palabraSecreta.length; i++){
-            if(letra.equals(this.palabraSecreta[i])){
+            if(letra.toUpperCase().equals(this.palabraSecreta[i])){
                check=true;
             }
         }
@@ -60,8 +64,8 @@ public class Ahorcado {
     public void intento(String letra){
         if(this.buscarLetra(letra)){
             for (int i = 0; i < this.palabraSecreta.length; i++){
-                if (letra.equals(this.palabraSecreta[i])) {
-                    this.palabraEnJuego[i] = letra;
+                if (letra.toUpperCase().equals(this.palabraSecreta[i])) {
+                    this.palabraEnJuego[i] = letra.toUpperCase();
                     this.letrasEncontradas++;
                 }
             }

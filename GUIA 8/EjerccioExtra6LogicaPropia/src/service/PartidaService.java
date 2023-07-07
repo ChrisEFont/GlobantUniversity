@@ -36,9 +36,15 @@ public class PartidaService {
     }
     
     public void intentar(Partida nvaPartida, Ahorcado nvoAhorcado){
+        String letra;
         if (nvaPartida.verificarIntentos(nvoAhorcado)) {
             System.out.println("Ingrese una letra");
-            nvaPartida.intentar(nvoAhorcado, input.nextLine());
+            letra=input.nextLine();
+            if(!nvaPartida.verificarLetra(nvoAhorcado, letra)){
+                nvaPartida.intentar(nvoAhorcado, letra);
+            }else{
+                System.out.println("Letra ya encontrada, jugada invalida");
+            }            
         } else {
             nvaPartida.finPartida(nvoAhorcado);
         }      
