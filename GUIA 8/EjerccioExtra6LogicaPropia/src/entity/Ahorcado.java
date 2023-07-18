@@ -74,7 +74,7 @@ public class Ahorcado {
             
         }else{
             this.intentosPermitidos--;
-            System.out.println("No has acertado");
+            System.out.println("No has acertado, "+"te quedan "+this.intentosPermitidos+" intentos");
         }        
     }   
     
