@@ -9,7 +9,7 @@ package entity;
  *
  * @author chris
  */
-public class TemperatureConverter {
+public class  TemperatureConverter {
 
     public TemperatureConverter() {
     }    
