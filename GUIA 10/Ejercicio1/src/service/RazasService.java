@@ -1,0 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package service;
+
+import entity.Razas;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author chris
+ */
+public class RazasService {
+    Scanner input = new Scanner(System.in).useDelimiter("\n");
+
+    public RazasService() {
+    }    
+    
+    public Razas crearRazas(){
+       Razas razas = new Razas();
+       return razas;
+    }
+    
+    public void agregarRaza(Razas razas){
+        System.out.println("Ingrese el nombre de la raza");
+        razas.agregarRaza(input.nextLine());        
+    }
+    
+    public void mostrarRazas(Razas razas){
+        for (String aux: razas.getRazas()){
+            System.out.println(aux);
+        }
+    }
+        
+    
+}
