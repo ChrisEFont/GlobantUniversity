@@ -7,6 +7,9 @@ package service;
 
 import entity.Razas;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import static java.util.Collections.list;
 import java.util.Scanner;
 
 /**
@@ -30,9 +33,20 @@ public class RazasService {
     }
     
     public void mostrarRazas(Razas razas){
+        razas.ordenar();
         for (String aux: razas.getRazas()){
             System.out.println(aux);
         }
+    }
+    
+    public void eliminarRaza(Razas razas){
+        System.out.println("Ingrese la raza a elminar");
+        if(razas.eliminarRaza(input.nextLine())){
+            this.mostrarRazas(razas);
+        }else{
+            System.out.println("La raza ingresada no se encuentar en la lista");
+        };
+        
     }
         
     

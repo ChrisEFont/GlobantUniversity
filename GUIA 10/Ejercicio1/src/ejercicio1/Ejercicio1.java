@@ -30,11 +30,14 @@ public class Ejercicio1 {
         do{
             System.out.println("Ingrese una opción");
             System.out.println("1 - Agregar una raza");
+            System.out.println("2 - Eliminar una raza");
             System.out.println("0 - terminar y mostrar");
             opt=input.nextInt();
             
             switch(opt){
                 case 1: razasServ.agregarRaza(razas);
+                break;
+                case 2: razasServ.eliminarRaza(razas);
                 break;
                 case 0: razasServ.mostrarRazas(razas);
                 break;

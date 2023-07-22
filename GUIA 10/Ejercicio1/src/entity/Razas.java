@@ -6,6 +6,7 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -22,8 +23,22 @@ public class Razas {
         this.razas.add(raza);
     }
     
+    public void ordenar(){
+        Collections.sort(razas);
+    }
+    
     public ArrayList<String> getRazas(){
         return this.razas;
-    }   
+    }    
+    
+    public boolean eliminarRaza(String raza){
+        if(razas.contains(raza)){
+            this.razas.remove(raza);
+            return true;
+        }else{
+            return false;
+        } 
+        
+    }
     
 }
