@@ -70,34 +70,24 @@ public class AlumnoService {
         String nombre;
         float promedio=0;
         boolean flag=true;
+        int index;
         
         do{
             System.out.println("Ingrese el nombre del alumno buscado");
             nombre = input.nextLine();
-            
-//            for(int i=0; i<this.alumnos.size(); i++){
-//                if (this.alumnos.get(i).getNombre().equals(nombre) ) {
-//                    for (int k = 0; k<3; k++){
-//                        promedio += this.alumnos.get(i).getNotas().get(k);
-//                    }
-//                    flag=false;
-//                } else {
-//                    System.out.println("El alumno ingresado no se encuentra en la lista");
-//                }
-//                
-//            }
-            
+  
             for(Alumno aux: alumnos){
                 if(aux.getNombre().equals(nombre)){
                     for (int i = 0; i < aux.getNotas().size(); i++) {
                         promedio += aux.getNotas().get(i);
                     }
                     flag=false;
-                }else{
-                    System.out.println("El alumno ingresado no se encuentra en la lista");                    
-                }                
+                }              
             }
 
+            if (flag) {
+                System.out.println("El alumno ingresado no se encuentra en la lista");
+            }
 
         }while(flag);
         return promedio/3;
