@@ -21,6 +21,7 @@ public class Ejercicio3 {
         Scanner input = new Scanner(System.in).useDelimiter("\n") ;
         int opt;
         AlumnoService alumnoService = AlumnoService.getInstance();
+
         do{
             System.out.println("Ingrese una opción");
             System.out.println("1 - Ingresar alumnos");
