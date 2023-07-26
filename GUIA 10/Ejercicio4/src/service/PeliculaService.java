@@ -120,15 +120,6 @@ public class PeliculaService {
     
        public void ordenarPeliculasDirector(){
         peliculas.sort(Pelicula.compararDirector);
-    }
-    
-
-    
-    
-    
-  
-    
-    
-    
+    }    
     
 }
