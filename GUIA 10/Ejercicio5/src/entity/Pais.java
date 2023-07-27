@@ -6,6 +6,7 @@
 package entity;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 /**
  *
@@ -36,6 +37,29 @@ public class Pais {
             return p1.getNombre().compareTo(p2.getNombre());
         }
     };    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.nombre);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pais other = (Pais) obj;
+        return true;
+    }
+    
     
 
     @Override
