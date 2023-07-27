@@ -8,6 +8,7 @@ package service;
 import entity.Pais;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -18,7 +19,7 @@ public class PaisService {
     
     Scanner input = new Scanner(System.in).useDelimiter("\n");
     
-    private static HashSet<Pais> paises = new HashSet();
+    private HashSet<Pais> paises = new HashSet();
     
     public PaisService(){        
     }
@@ -29,7 +30,7 @@ public class PaisService {
         guardarPais(pais);
     }
     
-    public static void guardarPais(Pais pais){
+    public void guardarPais(Pais pais){
         paises.add(pais);
     }
     
@@ -46,5 +47,15 @@ public class PaisService {
         return paisesLista;
     }
     
-    
+    public void eliminarPais(){
+        String paisDel;
+        System.out.println("Ingrese el país quedesea eliminar");
+        paisDel = input.nextLine();
+        Iterator<Pais> iterator = paises.iterator();
+        while(iterator.hasNext()){
+            if(iterator.next().getNombre().equals(paisDel)){
+                iterator.remove();
+            }
+        }        
+    }   
 }

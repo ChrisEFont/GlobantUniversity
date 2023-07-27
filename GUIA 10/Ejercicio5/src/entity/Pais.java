@@ -35,7 +35,8 @@ public class Pais {
         public int compare(Pais p1, Pais p2){
             return p1.getNombre().compareTo(p2.getNombre());
         }
-    };
+    };    
+    
 
     @Override
     public String toString() {

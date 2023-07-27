@@ -27,7 +27,7 @@ public class Ejercicio5 {
             System.out.println("Ingrese una opción");
             System.out.println("1 - Cargar un país");
             System.out.println("2 - Mostrar todos los países");
-            System.out.println("3 - Buscar nu país");
+            System.out.println("3 - Eliminar un país");
             System.out.println("0 - Finalizar");
             
             opt=input.nextInt();
@@ -40,6 +40,7 @@ public class Ejercicio5 {
                     paisServ.mostrarPaises();
                     break;
                 case 3:
+                    paisServ.eliminarPais();
                     break;
                 case 0:
                     break;
