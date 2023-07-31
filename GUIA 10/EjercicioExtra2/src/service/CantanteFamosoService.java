@@ -5,10 +5,28 @@
  */
 package service;
 
+import entity.CantanteFamoso;
+import java.util.Scanner;
+
 /**
  *
  * @author chris
  */
 public class CantanteFamosoService {
+    
+    Scanner input = new Scanner(System.in);
+    
+    public CantanteFamoso crearCantante(){
+        System.out.println("Ingrese el nombre del cantante");
+        String nombre = input.nextLine();
+        System.out.println("Ingrese el disco con mas ventas");
+        String disco = input.nextLine();
+        
+       CantanteFamoso cantanteFamoso = new CantanteFamoso(nombre, disco);
+       
+       return cantanteFamoso;        
+    }
+    
+    
     
 }
