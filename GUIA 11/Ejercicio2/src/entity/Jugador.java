@@ -28,11 +28,15 @@ public class Jugador {
         
         if(revolver.mojar()){
             mojado=true;
+        }else{
+            revolver.suguienteChorro();
         }
         
-        revolver.suguienteChorro();
-        
         return mojado;
-    }    
+    }
+
+    public String getNombre() {
+        return nombre;
+    }       
     
 }

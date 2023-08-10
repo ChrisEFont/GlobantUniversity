@@ -32,7 +32,7 @@ public class Revolver {
         if(posicionActual<12){
             posicionActual++;
         }else{
-            posicionActual=1;
+            posicionActual=0;
         }
     }
 
