@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="service">
+  <ClassDiagramComponents>
+    <Class name="JuegoService" package="service" visibility="public" xPosition="312.0" yPosition="180.0">
+      <Fields>
+        <Field name="input" type="Scanner" visibility="private"/>
+        <Field name="juego" type="Juego" visibility="private"/>
+        <Field name="revolver" type="Revolver" visibility="private"/>
+        <Field name="jugadores" type="ArrayList&lt;Jugador&gt;" visibility="private"/>
+        <Field name="turno" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="iniciarJugador" returnType="void" visibility="public"/>
+        <Method name="cargarJuego" returnType="void" visibility="public"/>
+        <Method name="disparar" returnType="boolean" visibility="public"/>
+        <Method name="turno" returnType="void" visibility="public"/>
+        <Method name="finalizar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
