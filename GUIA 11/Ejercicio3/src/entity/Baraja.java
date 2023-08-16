@@ -94,10 +94,11 @@ public class Baraja {
         int i=0;
         
         if (cantidad < baraja.size()) {
-            while (iterator.hasNext()&&i<cantidad) {
-                mano.add(baraja.get(i));
-                monton.add(baraja.get(i));
-                iterator.remove();
+            while (iterator.hasNext()&&i<cantidad){
+                Carta carta = (Carta)iterator.next();                                                 
+                mano.add(carta);
+                monton.add(carta);                
+                iterator.remove();                   
                 i++;
             }
         }       
