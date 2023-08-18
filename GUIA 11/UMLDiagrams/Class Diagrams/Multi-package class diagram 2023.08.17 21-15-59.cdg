@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-package class diagram">
+  <ClassDiagramComponents>
+    <Class name="BaseClientes" package="gestionClientes" visibility="public" xPosition="587.0" yPosition="114.0">
+      <Fields>
+        <Field name="clientes" type="ArrayList&lt;Cliente&gt;" visibility="package"/>
+        <Field name="INSTANCE" type="BaseClientes" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="BaseClientes" visibility="public" isStatic="true"/>
+        <Method name="agregarCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="devolverClientes" returnType="ArrayList&lt;Cliente&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cliente" package="gestionClientes" visibility="public" xPosition="914.0" yPosition="114.0">
+      <Fields>
+        <Field name="numeroCliente" type="int" visibility="private"/>
+        <Field name="dni" type="long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="package"/>
+        <Field name="domicilio" type="String" visibility="package"/>
+        <Field name="telefono" type="String" visibility="package"/>
+        <Field name="email" type="String" visibility="package"/>
+        <Field name="polizas" type="ArrayList&lt;Poliza&gt;" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="numeroCliente"/>
+          <Argument type="long" name="dni"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="domicilio"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="BasePolizas" package="gestionPolizas" visibility="public" xPosition="1554.0" yPosition="884.0">
+      <Fields>
+        <Field name="polizas" type="ArrayList&lt;Poliza&gt;" visibility="package"/>
+        <Field name="INSTANCE" type="BasePolizas" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="BasePolizas" visibility="public" isStatic="true"/>
+        <Method name="agregarPoliza" returnType="void" visibility="public">
+          <Argument type="Poliza" name="poliza"/>
+        </Method>
+        <Method name="devolverPolizas" returnType="ArrayList&lt;Poliza&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cuota" package="gestionPolizas" visibility="public" xPosition="2341.0" yPosition="362.0">
+      <Fields>
+        <Field name="numeroPoliza" type="int" visibility="private"/>
+        <Field name="importe" type="float" visibility="private"/>
+        <Field name="vencimiento" type="Date" visibility="private"/>
+        <Field name="paga" type="boolean" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="numeroPoliza"/>
+          <Argument type="int" name="numeroCuota"/>
+          <Argument type="int" name="cantidadCuotas"/>
+          <Argument type="float" name="importe"/>
+          <Argument type="Date" name="vencimiento"/>
+          <Argument type="boolean" name="paga"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Poliza" package="gestionPolizas" visibility="public" xPosition="1220.0" yPosition="462.0">
+      <Fields>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="vehiculo" type="Vehiculo" visibility="private"/>
+        <Field name="inicio" type="Date" visibility="private"/>
+        <Field name="numeroPoliza" type="int" visibility="private"/>
+        <Field name="primaAsegurada" type="float" visibility="private"/>
+        <Field name="tipo" type="TipoPoliza" visibility="private"/>
+        <Field name="granizo" type="boolean" visibility="private"/>
+        <Field name="formaPago" type="FormaPago" visibility="private"/>
+        <Field name="cuotas" type="ArrayList&lt;Cuota&gt;" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+          <Argument type="Vehiculo" name="vehiculo"/>
+          <Argument type="Date" name="inicio"/>
+          <Argument type="Date" name="fin"/>
+          <Argument type="int" name="numeroPoliza"/>
+          <Argument type="int" name="cantidadCuotas"/>
+          <Argument type="float" name="primaAsegurada"/>
+          <Argument type="TipoPoliza" name="tipo"/>
+          <Argument type="boolean" name="granizo"/>
+          <Argument type="FormaPago" name="formaPago"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="BaseVehiculos" package="gestionVehiculos" visibility="public" xPosition="568.0" yPosition="824.0">
+      <Fields>
+        <Field name="vehiculos" type="ArrayList&lt;Vehiculo&gt;" visibility="private"/>
+        <Field name="INSTANCE" type="BaseVehiculos" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="BaseVehiculos" visibility="public" isStatic="true"/>
+        <Method name="agregarVehiculo" returnType="void" visibility="public">
+          <Argument type="Vehiculo" name="vehiculo"/>
+        </Method>
+        <Method name="devolverVehiculos" returnType="ArrayList&lt;Vehiculo&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Vehiculo" package="gestionVehiculos" visibility="public" xPosition="289.0" yPosition="462.0">
+      <Fields>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="tipoVehiculo" type="TipoVehiculo" visibility="private"/>
+        <Field name="anio" type="int" visibility="private"/>
+        <Field name="titular" type="Cliente" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="marca"/>
+          <Argument type="String" name="modelo"/>
+          <Argument type="String" name="dominio"/>
+          <Argument type="String" name="nChasis"/>
+          <Argument type="String" name="nMotor"/>
+          <Argument type="String" name="color"/>
+          <Argument type="TipoVehiculo" name="tipoVehiculo"/>
+          <Argument type="int" name="anio"/>
+          <Argument type="Cliente" name="titular"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Enum name="FormaPago" package="gestionPolizas" visibility="public" xPosition="2401.0" yPosition="801.0">
+      <Literals>
+        <Literal name="DEBITO_AUTOMATICO"/>
+        <Literal name="TARJETA_CREDITO"/>
+        <Literal name="EFECTIVO"/>
+      </Literals>
+    </Enum>
+    <Enum name="TipoPoliza" package="gestionPolizas" visibility="public" xPosition="2341.0" yPosition="574.0">
+      <Literals>
+        <Literal name="TODO_RIESGO"/>
+        <Literal name="TERCEROS_COMPLETO"/>
+        <Literal name="RESPOABILIDAD_CIVIL"/>
+      </Literals>
+    </Enum>
+    <Enum name="TipoVehiculo" package="gestionVehiculos" visibility="public" xPosition="63.0" yPosition="462.0">
+      <Literals>
+        <Literal name="SEDAN_3"/>
+        <Literal name="SEDAN_5"/>
+        <Literal name="PICK_UP"/>
+        <Literal name="UTIL"/>
+        <Literal name="FURGON"/>
+        <Literal name="SUV"/>
+        <Literal name="CAMION"/>
+        <Literal name="MINI_BUS"/>
+        <Literal name="BUS"/>
+        <Literal name="MOTO"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="gestionVehiculos.BaseVehiculos" target="gestionVehiculos.Vehiculo" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="clientes" source="gestionClientes.BaseClientes" target="gestionClientes.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Cliente&gt;"/>
+    <UseRelation source="gestionPolizas.BasePolizas" target="gestionPolizas.Poliza" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="INSTANCE" source="gestionPolizas.BasePolizas" target="gestionPolizas.BasePolizas" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="tipo" source="gestionPolizas.Poliza" target="gestionPolizas.TipoPoliza" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vehiculos" source="gestionVehiculos.BaseVehiculos" target="gestionVehiculos.Vehiculo" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Vehiculo&gt;"/>
+    <HasRelation name="INSTANCE" source="gestionClientes.BaseClientes" target="gestionClientes.BaseClientes" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="formaPago" source="gestionPolizas.Poliza" target="gestionPolizas.FormaPago" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vehiculo" source="gestionPolizas.Poliza" target="gestionVehiculos.Vehiculo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="INSTANCE" source="gestionVehiculos.BaseVehiculos" target="gestionVehiculos.BaseVehiculos" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cuotas" source="gestionPolizas.Poliza" target="gestionPolizas.Cuota" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Cuota&gt;"/>
+    <HasRelation name="cliente" source="gestionPolizas.Poliza" target="gestionClientes.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="polizas" source="gestionClientes.Cliente" target="gestionPolizas.Poliza" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Poliza&gt;"/>
+    <HasRelation name="polizas" source="gestionPolizas.BasePolizas" target="gestionPolizas.Poliza" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Poliza&gt;"/>
+    <HasRelation name="tipoVehiculo" source="gestionVehiculos.Vehiculo" target="gestionVehiculos.TipoVehiculo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gestionClientes.BaseClientes" target="gestionClientes.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="titular" source="gestionVehiculos.Vehiculo" target="gestionClientes.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
