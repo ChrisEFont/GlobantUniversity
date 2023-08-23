@@ -40,16 +40,10 @@ public class Poliza {
         this.granizo = granizo;
         this.formaPago = formaPago;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Poliza{" + "cliente=" + cliente + ", vehiculo=" + vehiculo + ", inicio=" + inicio + ", fin=" + fin + ", numeroPoliza=" + numeroPoliza + ", cantidadCuotas=" + cantidadCuotas + ", primaAsegurada=" + primaAsegurada + ", tipo=" + tipo + ", granizo=" + granizo + ", formaPago=" + formaPago + '}';
+    }        
     
 }

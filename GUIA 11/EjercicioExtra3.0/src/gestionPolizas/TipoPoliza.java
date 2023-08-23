@@ -10,5 +10,5 @@ package gestionPolizas;
  * @author chris
  */
 public enum TipoPoliza {
-    TODO_RIESGO, TERCEROS_COMPLETO, RESPOABILIDAD_CIVIL;
+    TODO_RIESGO, TERCEROS_COMPLETO, RESPONSABILIDAD_CIVIL;
 }

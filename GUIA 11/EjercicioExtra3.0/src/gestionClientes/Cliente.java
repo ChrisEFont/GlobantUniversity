@@ -30,6 +30,17 @@ public class Cliente {
         this.telefono = telefono;
         this.email = email;
     }
+
+    public int getNumeroCliente() {
+        return numeroCliente;
+    }    
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "numeroCliente=" + numeroCliente + ", dni=" + dni + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", email=" + email + '}';
+    }
+    
+    
     
     
     

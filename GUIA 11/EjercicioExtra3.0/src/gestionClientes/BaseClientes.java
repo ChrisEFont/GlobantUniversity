@@ -15,9 +15,12 @@ public class BaseClientes {
     
     ArrayList<Cliente> clientes = new ArrayList();
     
+    private int contador;
+    
     private static BaseClientes INSTANCE;
     
-    private BaseClientes(){        
+    private BaseClientes(){
+        contador=0;
     }
     
     public static BaseClientes getInstance(){
@@ -28,11 +31,20 @@ public class BaseClientes {
     }
     
     public void agregarCliente(Cliente cliente){
+        contador++;
         clientes.add(cliente);
     }
     
     public ArrayList<Cliente> devolverClientes(){
         return clientes;
     }
+
+    public int getContador() {
+        return contador;
+    }
+    
+    
+    
+    
     
 }

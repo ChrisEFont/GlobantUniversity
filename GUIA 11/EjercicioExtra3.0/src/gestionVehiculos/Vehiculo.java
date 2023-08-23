@@ -28,6 +28,23 @@ public class Vehiculo {
         this.tipoVehiculo = tipoVehiculo;
         this.anio = anio;
         this.titular = titular;
+    }
+
+    public String getDominio() {
+        return dominio;
+    }
+
+    public void setNumeroPoliza(int numeroPoliza) {
+        this.numeroPoliza = numeroPoliza;
     }    
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" + "marca=" + marca + ", modelo=" + modelo + ", dominio=" + dominio + ", nChasis=" + nChasis + ", nMotor=" + nMotor + ", color=" + color + ", tipoVehiculo=" + tipoVehiculo + ", anio=" + anio + ", numeroPoliza=" + numeroPoliza + '}';
+    }
+    
+    
+    
+    
     
 }

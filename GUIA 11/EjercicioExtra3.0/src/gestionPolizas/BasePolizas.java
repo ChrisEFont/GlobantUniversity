@@ -38,5 +38,11 @@ public class BasePolizas {
     public ArrayList<Poliza> devolverPolizas(){
         return polizas;
     }
+
+    public int getContador() {
+        return contador;
+    }
+    
+    
     
 }
