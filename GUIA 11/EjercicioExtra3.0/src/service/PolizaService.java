@@ -8,6 +8,7 @@ package service;
 import gestionClientes.BaseClientes;
 import gestionClientes.Cliente;
 import gestionPolizas.BasePolizas;
+import gestionPolizas.Cuota;
 import gestionPolizas.FormaPago;
 import gestionPolizas.Poliza;
 import gestionPolizas.TipoPoliza;
@@ -33,6 +34,43 @@ public class PolizaService {
         for(Poliza aux: polizas){
             System.out.println(aux.toString());
         }
+    }
+    
+    public void buscarPoliza(BasePolizas basePolizas){
+        ArrayList<Poliza> polizas = basePolizas.devolverPolizas();
+        System.out.println("Ingrese el numero de póliza");
+        int numeroPoliza = input.nextInt();
+        input.nextLine();
+        for(Poliza aux: polizas){
+            if(aux.getNumeroPoliza()==numeroPoliza){
+                System.out.println(aux.toString());
+                System.out.println("Desea ver las cuotas? S/N");
+                String opt = input.nextLine();
+                for(Cuota aux2: aux.devolverCuotas()){
+                    System.out.println(aux2.toString());
+                }
+            } 
+        }
+    }
+    
+    public void pagarCuota(BasePolizas basePolizas) {
+        ArrayList<Poliza> polizas = basePolizas.devolverPolizas();
+        System.out.println("Ingrese el numero de póliza");
+        int numeroPoliza = input.nextInt();
+        input.nextLine();
+        for (Poliza aux : polizas) {
+            if (aux.getNumeroPoliza() == numeroPoliza) {
+                for (Cuota aux2 : aux.devolverCuotas()) {
+                    if(!aux2.isPaga()){
+                        aux2.pagar();
+                        System.out.println("Cuota "+aux2.getNumeroCuota()+" abonada");
+                        break;
+                    }
+                    System.out.println(aux2.toString());
+                }
+            }
+        }
+
     }
     
     public void crearPoliza (BasePolizas basePolizas, BaseClientes baseClientes, BaseVehiculos baseVehiculos){

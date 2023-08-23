@@ -39,7 +39,23 @@ public class Poliza {
         this.tipo = tipo;
         this.granizo = granizo;
         this.formaPago = formaPago;
+        this.crearCuotas();
     }
+    
+    private void crearCuotas(){
+        for(int i=0; i<cantidadCuotas; i++){
+            Cuota cuota = new Cuota(numeroPoliza, i+1, cantidadCuotas, tipo, primaAsegurada, granizo, inicio);
+            cuotas.add(cuota);
+        }
+    }
+    
+    public ArrayList<Cuota> devolverCuotas(){
+        return cuotas;
+    }
+
+    public int getNumeroPoliza() {
+        return numeroPoliza;
+    }    
 
     @Override
     public String toString() {

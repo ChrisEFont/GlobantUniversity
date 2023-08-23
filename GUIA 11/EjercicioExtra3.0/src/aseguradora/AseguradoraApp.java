@@ -44,6 +44,8 @@ public class AseguradoraApp {
             System.out.println("4 - Mostrar Clientes");
             System.out.println("5 - Mostrar Vehículos");
             System.out.println("6 - Mostrar Pólizas");
+            System.out.println("7 - Buscar una Poliza");
+            System.out.println("8 - Pagar una cuota");
             System.out.println("0 - Finalizar");
             opt = input.nextInt();
             switch (opt) {
@@ -64,6 +66,12 @@ public class AseguradoraApp {
                     break;
                 case 6:
                     polizaServ.mostrarPolizas(basePolizas);
+                    break;
+                case 7:
+                    polizaServ.buscarPoliza(basePolizas);
+                    break;
+                case 8:
+                    polizaServ.pagarCuota(basePolizas);
                     break;
                 case 0:
                     break;
