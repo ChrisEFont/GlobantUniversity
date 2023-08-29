@@ -17,8 +17,8 @@ public class Televisor extends Electrodomestico {
     public Televisor() {
     }
 
-    public Televisor(int resolucion, boolean sintonizadorTdt) {
-        super();
+    public Televisor(String color, float precio, float peso, char consumo, int resolucion, boolean sintonizadorTdt) {
+        super(color, precio, peso, consumo);
         this.resolucion = resolucion;
         this.sintonizadorTdt = sintonizadorTdt;
     }
@@ -44,7 +44,8 @@ public class Televisor extends Electrodomestico {
         }
         if(sintonizadorTdt){
             super.setPrecio(super.getPrecio()+500);
-        }        
+        }
+        super.precioFinal();
     }
     
     public int getResolucion() {

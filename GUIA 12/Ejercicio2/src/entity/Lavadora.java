@@ -19,8 +19,8 @@ public class Lavadora extends Electrodomestico {
     public Lavadora() {
     }
     
-    public Lavadora(int carga) {
-        super();
+    public Lavadora(String color, float precio, float peso, char consumo, int carga) {
+        super(color, precio, peso, consumo);
         this.carga = carga;        
     }
     
@@ -33,9 +33,9 @@ public class Lavadora extends Electrodomestico {
     @Override
     public void precioFinal(){
         if(30<carga){
-            super.setPrecio(super.getPrecio()+500);
-            super.precioFinal();
+            super.setPrecio(super.getPrecio()+500);            
         }
+        super.precioFinal();
     }
 
     public int getCarga() {
