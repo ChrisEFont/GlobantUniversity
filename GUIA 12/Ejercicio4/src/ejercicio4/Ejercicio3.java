@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio3;
+package ejercicio4;
 
 import entity.Circulo;
 import entity.Rectangulo;
