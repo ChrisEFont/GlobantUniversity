@@ -9,17 +9,12 @@ package entity;
  *
  * @author chris
  */
-public class Yacht extends Ship {
+public class Yacht extends Motorboat {   
     
-    public int motorHp, stateroomQuantity;
-
-    public int getMotorHp() {
-        return motorHp;
-    }
-
-    public void setMotorHp(int motorHp) {
-        this.motorHp = motorHp;
-    }
+    public int stateroomQuantity;    
+    
+    public Yacht() {
+    } 
 
     public int getStateroomQuantity() {
         return stateroomQuantity;

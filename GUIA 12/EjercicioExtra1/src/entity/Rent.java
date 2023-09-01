@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package entity;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -13,16 +13,32 @@ import java.util.Date;
 public class Rent {
     
     private String customerName, customerId;
-    private Date rentStart, rentEnd;
-    private int mooringNumber, dias;
+    private Calendar rentStart, rentEnd;
+    private int mooringNumber, days;
     private Ship ship;
     private float price;
 
     public Rent() {
-    }    
+    }
+
+    public Rent(String customerName, String customerId, Calendar rentStart, Calendar rentEnd, int mooringNumber, Ship ship) {
+        this.customerName = customerName;
+        this.customerId = customerId;
+        this.rentStart = rentStart;
+        this.rentEnd = rentEnd;
+        this.mooringNumber = mooringNumber;
+        this.ship = ship;
+        this.days();
+        this.price();
+    }
+
+    public void days(){
+        days=(int)(rentEnd.getTimeInMillis()-rentStart.getTimeInMillis())/ (86400000);
+    }
+       
     
     public void price(){
-        price=dias*ship.length;
+        price=days*ship.length;
         if(ship instanceof Sailboat){
             Sailboat sailboat = new Sailboat();
             sailboat = (Sailboat) ship;
@@ -38,5 +54,10 @@ public class Rent {
             yacht = (Yacht) ship;
             price += yacht.getMotorHp() + yacht.getStateroomQuantity();
         }        
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Rent{" + "customerName=" + customerName + ", customerId=" + customerId + ", mooringNumber=" + mooringNumber + ", days=" + days + ", ship=" + ship + ", price=" + price + '}';
+    }  
 }

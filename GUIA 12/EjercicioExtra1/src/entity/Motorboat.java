@@ -13,6 +13,9 @@ public class Motorboat extends Ship {
     
     public int motorHp;
 
+    public Motorboat() {
+    }    
+
     public int getMotorHp() {
         return motorHp;
     }
