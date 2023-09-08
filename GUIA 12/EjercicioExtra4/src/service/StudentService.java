@@ -51,7 +51,7 @@ public class StudentService {
     }
     
     public static void showStudentInfo(Student student){
-        student.toString();
+        System.out.println(student.toString());
     }
     
     

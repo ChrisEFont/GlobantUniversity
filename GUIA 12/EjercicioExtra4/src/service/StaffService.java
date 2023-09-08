@@ -19,10 +19,11 @@ public class StaffService {
     
     public static Staff createStaff(){
         Staff staff = new Staff();
+        dataFill(staff);
         return staff;
     }
     
-    public static void dataFill(Staff staff){
+    private static void dataFill(Staff staff){
         System.out.println("Ingrese el nombre");
         staff.setFirstName(input.nextLine());
         System.out.println("Ingrese el apellido");
@@ -38,6 +39,14 @@ public class StaffService {
         System.out.println("Ingrese el numero de despacho");
         staff.setOfficeNumber(input.nextInt());
         input.nextLine();        
+    }
+    
+    public static void setSection(Staff staff){
+       staff.setSection(SectionService.defineSection()); 
+    }
+    
+    public static void showStaffInfo(Staff staff){
+        System.out.println(staff.toString());
     }
     
 }

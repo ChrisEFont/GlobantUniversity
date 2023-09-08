@@ -36,5 +36,14 @@ public class ProfessorService {
         System.out.println("Ingrese el numero de despacho");
         professor.setOfficeNumber(input.nextInt());
         input.nextLine();
-    }    
+    }
+    
+    public static void setDepartment(Professor professor){
+        System.out.println("Seleccione el nuevo departamento");
+        professor.setDepartment(DepartmentService.defineDeparment());
+    }
+    
+    public static void showProfessorInfo(Professor professor){
+        System.out.println(professor.toString());
+    }
 }

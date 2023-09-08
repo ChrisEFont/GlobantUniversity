@@ -58,7 +58,9 @@ public class StudentMenu {
                 default:
                     System.out.println("Opción invalida");
             }
-        } while (option!= 0);       
+        } while (option!= 0);
+        
+        input.nextInt();
     }
     
     public static void showStudents(ArrayList<People> people) {

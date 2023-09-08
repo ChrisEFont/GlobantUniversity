@@ -6,8 +6,10 @@
 package ejercicioextra4;
 
 import entity.People;
+import menues.ProfessorMenu;
 import java.util.ArrayList;
 import java.util.Scanner;
+import menues.StaffMenu;
 import menues.StudentMenu;
 
 /**
@@ -38,8 +40,10 @@ public class EjercicioExtra4 {
                     StudentMenu.studentMenu(people);
                     break;
                 case 2:
+                    ProfessorMenu.professorMenu(people);
                     break;
                 case 3:
+                    StaffMenu.staffMenu(people);
                     break;
                 case 0:
                     break;
