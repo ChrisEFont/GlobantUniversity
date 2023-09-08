@@ -17,6 +17,7 @@ public class ProfessorService {
     
     public static Professor createProfessor(){
         Professor professor = new Professor();
+        dataFill(professor);
         return professor;
     }
     
@@ -30,9 +31,10 @@ public class ProfessorService {
         System.out.println("Ingrese el estado civil");
         CivilStatusService.defineCivilStatus(professor);
         System.out.println("Ingrese el año de inicio");
-        professor.setStartDate(input.nextInt());
-        
-        
-    }
-    
+        professor.setStartDate(DateService.setDate());
+        professor.setDepartment(DepartmentService.defineDeparment());
+        System.out.println("Ingrese el numero de despacho");
+        professor.setOfficeNumber(input.nextInt());
+        input.nextLine();
+    }    
 }

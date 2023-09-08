@@ -5,45 +5,48 @@
  */
 package service;
 
-import entity.People;
-import enums.CivilStatus;
+import entity.Professor;
+import enums.Department;
 import java.util.Scanner;
 
 /**
  *
  * @author chris
  */
-public class CivilStatusService { 
+public class DepartmentService {
     
-    public static void defineCivilStatus(People people){
+    
+    
+    public static Department defineDeparment(){
         
-    int option;
-    
-    Scanner input = new Scanner(System.in);  
-    
+        int option;
+        Department department=null;
+        
+        Scanner input = new Scanner(System.in);
+
         do {
             System.out.println("Ingrese una opción");
-            System.out.println("1 - Soltero / a");
-            System.out.println("2 - Concuvinato");
-            System.out.println("3 - Casado / a");
-            System.out.println("4 - Divorciado / a");
-            System.out.println("5 - Viudo / a");
+            System.out.println("1 - Maths");
+            System.out.println("2 - Lenguages");
+            System.out.println("3 - Engineering");
+            System.out.println("4 - Architectura");
+            System.out.println("5 - History");
             option = input.nextInt();
             switch (option) {
                 case 1:
-                    people.setCivilStatus(CivilStatus.SOLTERO);
+                    department=Department.MATHS;
                     break;
                 case 2:
-                    people.setCivilStatus(CivilStatus.CONCUVINATO);
+                    department=Department.LENGUAGES;
                     break;
                 case 3:
-                    people.setCivilStatus(CivilStatus.CASADO);
-                    break;                    
+                    department=Department.ENGINEERING;
+                    break;
                 case 4:
-                    people.setCivilStatus(CivilStatus.DIVORCIADO);
+                    department=Department.ARCHITECTURA;
                     break;
                 case 5:
-                    people.setCivilStatus(CivilStatus.VIUDO);
+                    department=Department.HISTORY;
                     break;
                 default:
                     System.out.println("Opción invalida");
@@ -51,5 +54,9 @@ public class CivilStatusService {
         } while (option!=1 && option!=2 && option!=3 && option!=4 && option!=5);
         
         input.nextLine();
+        
+        return department;        
     }
+    
+
 }

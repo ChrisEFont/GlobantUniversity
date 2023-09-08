@@ -31,6 +31,11 @@ public class Professor extends Employee{
 
     public void setDepartment(Department department) {
         this.department = department;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Professor{" +super.getFirstName()+" "+super.getSecondName()+" "+ "department=" + department + '}';
+    }   
     
 }

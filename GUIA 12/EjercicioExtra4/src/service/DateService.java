@@ -7,6 +7,8 @@ package service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 /**
  *
@@ -14,10 +16,24 @@ import java.util.Date;
  */
 public class DateService {
     
-    public void setDate(){
+    public static Date setDate(){
+        
+        int year, day, month; 
+        
+        Scanner input = new Scanner(System.in);
+        
         System.out.println("Ingrese el año de ingreso");
-        Date date;
-        Calendar calendar = new Calendar.set(Calendar.YEAR, 1900);
+        year = input.nextInt();
+        System.out.println("Ingrese el día");
+        day = input.nextInt();
+        System.out.println("Ingrese el mes");
+        month = input.nextInt();
+        Calendar calendar = new GregorianCalendar();
+        calendar.set(year, day, month);
+        
+        input.nextLine();
+        
+        return calendar.getTime();        
     }
         
 }

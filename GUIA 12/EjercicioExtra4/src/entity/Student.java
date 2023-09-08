@@ -29,6 +29,6 @@ public class Student extends People{
     
     public void addCourse(String course){
         this.courses.add(course);
-    }
+    }   
     
 }
