@@ -24,6 +24,13 @@ public class Ejercicio2 {
         
         System.out.println("Ingrese cantidad de jugadores");
         int cantidad = input.nextInt();
+        
+        
+
+//        for (int i = 0; i < cantidad; i++) {
+//            jugadores[i] = "Jugador" + i;
+//            System.out.println(jugadores[i]);
+//        }
                 
         try{
             
