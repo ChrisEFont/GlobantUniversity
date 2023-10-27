@@ -6,9 +6,10 @@
 package service;
 
 import entity.Author;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import persistence.AuthorDAO;
 
 /**
  *
@@ -16,9 +17,9 @@ import javax.persistence.Persistence;
  */
 public class AuthorService {
     
+    static AuthorDAO authorDAO = new AuthorDAO();
     static Scanner input = new Scanner(System.in);
-    static EntityManager em = Persistence.createEntityManagerFactory("LibreriaPU").createEntityManager();
-    
+        
     public static void authorMenu(){
         
         int option;
@@ -30,14 +31,25 @@ public class AuthorService {
             System.out.println("3 - Editar autor");
             System.out.println("4 - Crear un autor");
             System.out.println("5 - Eliminar un autor");
+            System.out.println("6 - Listar todos los autores");
             System.out.println("0 - Salir");
             
             option = input.nextInt();
             input.nextLine();
             
             switch(option){
+                case 1:
+                    findAuthorByName();
+                    break;
+                case 2:
+                    findAuthorById();
+                    break;
                 case 4:
-                    crateAuthor();
+                    createAuthor();
+                    break;
+                case 6:
+                    authorList();
+                case 0:
                     break;
                 default:
                     System.out.println("Opción invalida");
@@ -45,22 +57,69 @@ public class AuthorService {
         }while (option != 0);        
     }
     
-    public static void findAuthorByname(){
+    public static void findAuthorById(){
+        int id;
+        Author author;
+        System.out.println("Ingrese el ID");
+        id = input.nextInt();
+        author = authorDAO.finAuthordById(id);
+        if(author == null){
+            System.out.println("-------------*------------");
+            System.out.println("No se encontro el ID ingresado");
+            System.out.println("-------------*------------");
+        }else{
+            System.out.println(author.toString());            
+        }        
+    }
+    
+    public static void findAuthorByName(){
+        List<Author> authors = new ArrayList();
         String name;
         System.out.println("Ingrese el nombre del autor buscado");
         name = input.nextLine();
-        em.createQuery("select a from author a where a.name like :%name%").setParameter("name", name).getSingleResult();
-        
+        authors = authorDAO.findAuthorByName(name);
+        if(authors.isEmpty()){
+            System.out.println("-------------*------------");
+            System.out.println("No se encontraron coincidencias");
+            System.out.println("-------------*------------");
+        }else{
+            for (Author a : authors) {
+                System.out.println(a.toString());
+            }
+        }        
     }
     
-    public static void crateAuthor(){
+    public static void createAuthor(){
         String name;
         System.out.println("Ingrese el nombre del autor");
         name = input.nextLine();
         Author author = new Author(name);
-        em.getTransaction().begin();
-        em.persist(author);
-        em.getTransaction().commit();
-        System.out.println("Autor creado");
-    }    
+        try {
+            authorDAO.createAuthor(author);
+            System.out.println("-------------*------------");
+            System.out.println("Autor creado");
+            System.out.println("-------------*------------");
+        } catch (Exception e) {
+            System.out.println("ERROR");
+        }        
+    }
+    
+    public static void authorList(){
+        
+        try {
+            List<Author> authors = authorDAO.authorList();
+
+            if (authors.isEmpty()) {
+                System.out.println("Sin resultados");
+            } else {
+                for (Author a : authors) {
+                    System.out.println(a.toString());
+                }
+            }            
+        } catch (Exception e) {
+            System.out.println("Continua ejecución del progarama");
+        }
+        
+   
+    }
 }

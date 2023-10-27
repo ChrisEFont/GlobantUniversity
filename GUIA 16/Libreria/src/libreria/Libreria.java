@@ -39,6 +39,8 @@ public class Libreria {
                 case 2:
                     AuthorService.authorMenu();
                     break;
+                case 0:
+                    break;
                 default:
                     System.out.println("Opción invalida");                    
             }
