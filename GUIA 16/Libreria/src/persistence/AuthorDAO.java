@@ -6,7 +6,6 @@
 package persistence;
 
 import entity.Author;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,28 +39,26 @@ public class AuthorDAO extends DAO {
     }
     
     public List<Author> findAuthorByName(String name){
-        List authors = new ArrayList();        
+        // List authors = new ArrayList();        
         try {
             connect();
-            authors = em.createQuery("SELECT a FROM Author a WHERE a.name LIKE :name").
+            return em.createQuery("SELECT a FROM Author a WHERE a.name LIKE :name").
                 setParameter("name", "%"+name+"%").getResultList();            
         } catch (Exception e) {
-            System.out.println("Error");
+            System.out.println("Error al buscar autor");
+            return null;
         }finally{
             disconnect();
-        }        
-        return authors;
+        }
     }
     
     public Author finAuthordById(int id){
-        Author author = null;
-        try {
-            author = (Author) findById(Author.class, id);          
+        try {         
+            return (Author) findById(Author.class, id);          
         } catch (Exception e) {
-            System.out.println("Error al buscar");
-        }finally{
-            return author;            
-        }        
+            System.out.println("Error al buscar autor");
+            return null;
+        }       
     }
     
     public List<Author> authorList(){
@@ -71,13 +68,5 @@ public class AuthorDAO extends DAO {
             System.out.println("Error al listar autores");
             return null;            
         }  
-    }
-    
-
-    
-    
-    
-    
-    
-    
+    }    
 }

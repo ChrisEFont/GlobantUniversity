@@ -44,8 +44,14 @@ public class AuthorService {
                 case 2:
                     findAuthorById();
                     break;
+                case 3:
+                    authorEdit();
+                    break;
                 case 4:
                     createAuthor();
+                    break;
+                case 5:
+                    deleteAuthor();
                     break;
                 case 6:
                     authorList();
@@ -62,13 +68,18 @@ public class AuthorService {
         Author author;
         System.out.println("Ingrese el ID");
         id = input.nextInt();
-        author = authorDAO.finAuthordById(id);
-        if(author == null){
-            System.out.println("-------------*------------");
-            System.out.println("No se encontro el ID ingresado");
-            System.out.println("-------------*------------");
-        }else{
-            System.out.println(author.toString());            
+        try {
+            author = authorDAO.finAuthordById(id);
+            if (author == null) {
+                System.out.println("-------------*------------");
+                System.out.println("No se encontro el ID ingresado");
+                System.out.println("-------------*------------");
+            } else {
+                System.out.println(author.toString());
+            }            
+        } catch (Exception e) {
+            e.getMessage();
+            System.out.println("Continua ejecución del programa");
         }        
     }
     
@@ -77,16 +88,21 @@ public class AuthorService {
         String name;
         System.out.println("Ingrese el nombre del autor buscado");
         name = input.nextLine();
-        authors = authorDAO.findAuthorByName(name);
-        if(authors.isEmpty()){
-            System.out.println("-------------*------------");
-            System.out.println("No se encontraron coincidencias");
-            System.out.println("-------------*------------");
-        }else{
-            for (Author a : authors) {
-                System.out.println(a.toString());
+        try {
+            authors = authorDAO.findAuthorByName(name);
+            if (authors.isEmpty()) {
+                System.out.println("-------------*------------");
+                System.out.println("No se encontraron coincidencias");
+                System.out.println("-------------*------------");
+            } else {
+                for (Author a : authors) {
+                    System.out.println(a.toString());
+                }
             }
-        }        
+        } catch (Exception e) {
+            e.getMessage();
+            System.out.println("Continua ejecución del programa");
+        }       
     }
     
     public static void createAuthor(){
@@ -104,11 +120,48 @@ public class AuthorService {
         }        
     }
     
-    public static void authorList(){
-        
+    public static void authorEdit(){
+        Author author;
+        System.out.println("Ingrese el ID del autor a modificar");
+        author = authorDAO.finAuthordById(input.nextInt());
+        input.nextLine();        
+        if (author == null) {
+            System.out.println("No se encontro autor con ese ID");
+        } else {
+            try {
+                System.out.println("Ingrese el nuevo nombre");
+                author.setName(input.nextLine());
+                authorDAO.editAuthor(author);
+                System.out.println("Autor modificado");
+            } catch (Exception e) {
+                System.out.println("Error al editar autor");
+            }
+        }
+    }
+    
+    public static void deleteAuthor() {
+        Author author;
+        System.out.println("Ingrese el ID del autor que desea eliminar");
+        author = authorDAO.finAuthordById(input.nextInt());
+        input.nextLine();
+        if (author == null) {
+            System.out.println("No se encontro autor con ese ID");
+        } else {
+            System.out.println("Confirma eliminar el autor: " + author.getName() + " (S/N)");
+            if (input.nextLine().toUpperCase().equals("S")) {
+                try {
+                    authorDAO.deleteAuthor(author);
+                    System.out.println("Autor eliminado");
+                } catch (Exception e) {
+                    System.out.println("Error al editar autor");
+                }
+            }
+        }
+    }
+    
+    public static void authorList(){        
         try {
             List<Author> authors = authorDAO.authorList();
-
             if (authors.isEmpty()) {
                 System.out.println("Sin resultados");
             } else {
@@ -118,8 +171,6 @@ public class AuthorService {
             }            
         } catch (Exception e) {
             System.out.println("Continua ejecución del progarama");
-        }
-        
-   
+        }   
     }
 }
