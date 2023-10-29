@@ -89,12 +89,13 @@ public class AuthorService {
         System.out.println("Ingrese el nombre del autor buscado");
         name = input.nextLine();
         try {
-            authors = authorDAO.findAuthorByName(name);
+            authors = authorDAO.findAuthorByName(name);            
             if (authors.isEmpty()) {
                 System.out.println("-------------*------------");
                 System.out.println("No se encontraron coincidencias");
                 System.out.println("-------------*------------");
             } else {
+                authors.sort(Author.compareName);
                 for (Author a : authors) {
                     System.out.println(a.toString());
                 }
@@ -161,10 +162,11 @@ public class AuthorService {
     
     public static void authorList(){        
         try {
-            List<Author> authors = authorDAO.authorList();
+            List<Author> authors = authorDAO.authorList();            
             if (authors.isEmpty()) {
                 System.out.println("Sin resultados");
             } else {
+                authors.sort(Author.compareName);
                 for (Author a : authors) {
                     System.out.println(a.toString());
                 }

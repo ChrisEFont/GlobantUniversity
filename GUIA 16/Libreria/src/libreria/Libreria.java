@@ -7,6 +7,7 @@ package libreria;
 
 import java.util.Scanner;
 import service.AuthorService;
+import service.PublisherService;
 
 /**
  *
@@ -39,6 +40,8 @@ public class Libreria {
                 case 2:
                     AuthorService.authorMenu();
                     break;
+                case 3:
+                    PublisherService.publisherMenu();
                 case 0:
                     break;
                 default:

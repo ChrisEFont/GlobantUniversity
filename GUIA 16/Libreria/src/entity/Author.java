@@ -5,6 +5,7 @@
  */
 package entity;
 
+import java.util.Comparator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,10 +46,17 @@ public class Author {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public static Comparator<Author> compareName = new Comparator<Author>() {
+        @Override
+        public int compare(Author a1, Author a2) {
+            return a1.getName().compareTo(a2.getName());
+        }
+    };
 
     @Override
     public String toString() {
-        return "Author{" + "id=" + id + ", name=" + name + '}';
+        return id + "  " + name;
     }    
     
 }

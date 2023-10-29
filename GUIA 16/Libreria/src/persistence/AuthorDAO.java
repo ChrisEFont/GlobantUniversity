@@ -38,8 +38,7 @@ public class AuthorDAO extends DAO {
         }
     }
     
-    public List<Author> findAuthorByName(String name){
-        // List authors = new ArrayList();        
+    public List<Author> findAuthorByName(String name){    
         try {
             connect();
             return em.createQuery("SELECT a FROM Author a WHERE a.name LIKE :name").

@@ -5,9 +5,8 @@
  */
 package entity;
 
+import java.util.Comparator;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -19,23 +18,22 @@ import javax.persistence.Id;
 public class Publisher {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
     private String name;
 
     public Publisher() {
     }
 
-    public Publisher(Integer id, String name) {
+    public Publisher(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,6 +43,20 @@ public class Publisher {
 
     public void setName(String name) {
         this.name = name;
-    }   
+    }
+    
+    public static Comparator<Publisher> compareName = new Comparator<Publisher>() {
+        @Override
+        public int compare(Publisher p1, Publisher p2) {
+            return p1.getName().compareTo(p2.getName());
+        }
+    };
+
+    @Override
+    public String toString() {
+        return id + "  " + name;
+    }
+    
+    
     
 }
