@@ -63,7 +63,7 @@ public class PublisherService {
         }while (option != 0);        
     }
     
-    public static void findPublisherById(){
+    public static void findPublisherById() {
         String id;
         Publisher publisher;
         System.out.println("Ingrese el ID");
@@ -72,15 +72,15 @@ public class PublisherService {
             publisher = publisherDAO.findPublisherdById(id);
             if (publisher == null) {
                 System.out.println("-------------*------------");
-                System.out.println("No se encontro el ID ingresado");
+                System.out.println("No se encontro el CUIT ingresado");
                 System.out.println("-------------*------------");
             } else {
                 System.out.println(publisher.toString());
-            }            
+            }
         } catch (Exception e) {
             e.getMessage();
             System.out.println("Continua ejecución del programa");
-        }        
+        }
     }
     
     public static void findPublisherByName(){
@@ -127,10 +127,10 @@ public class PublisherService {
     
     public static void publisherEdit(){
         Publisher publisher;
-        System.out.println("Ingrese el ID de la editorial a modificar");
+        System.out.println("Ingrese el CUIT de la editorial a modificar");
         publisher = publisherDAO.findPublisherdById(input.nextLine());        
         if (publisher == null) {
-            System.out.println("No se encontro editorial con ese ID");
+            System.out.println("No se encontro editorial con ese CUIT");
         } else {
             try {
                 System.out.println("Ingrese el nuevo nombre");
@@ -176,6 +176,25 @@ public class PublisherService {
         } catch (Exception e) {
             System.out.println("Continua ejecución del progarama");
         }   
+    }
+    
+    public static Publisher getPublisherById(String id) {
+        Publisher publisher;
+        try {
+            publisher = publisherDAO.findPublisherdById(id);
+            if (publisher == null) {
+                System.out.println("-------------*------------");
+                System.out.println("No se encontro el CUIT ingresado");
+                System.out.println("-------------*------------");
+                return publisher;
+            } else {
+                return publisher;
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            System.out.println("Continua ejecución del programa");
+            return null;
+        }
     }
     
 }

@@ -18,11 +18,11 @@ import javax.persistence.ManyToOne;
 public class Book {
     
     @Id
-    private Long isbn;
+    private long isbn;
     private String title;
-    private Integer copies;
-    private Integer copiesBorroweds;
-    private Integer copiesAvailable;
+    private int copies;
+    private int copiesBorroweds;
+    private int copiesAvailable;
     
     @ManyToOne
     private Author author;

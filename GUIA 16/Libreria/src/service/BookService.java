@@ -5,7 +5,9 @@
  */
 package service;
 
+import entity.Author;
 import entity.Book;
+import entity.Publisher;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -107,13 +109,23 @@ public class BookService {
     }
 
     public static void createBook() {
-        Long isbn;
-        String title;
-        System.out.println("Ingrese el título dela libro");
+        long isbn;
+        int copies, copiesAvailable, copiesBorroweds;
+        Author author;        
+        Publisher publisher;
+        String title, publisherId;
+        System.out.println("Ingrese el título del libro");
         title = input.nextLine();
         System.out.println("Ingrese el ISBN");
         isbn = input.nextLong();
-        Book book = new Book(isbn, title);
+        System.out.println("Ingrese el ID del autor");
+        author = AuthorService.getAuthorById(input.nextInt());
+        input.nextLine();
+        System.out.println("Ingrese el CUIT de la editorial");
+        publisher = PublisherService.getPublisherById(input.nextLine());
+        System.out.println("Ingrese la cantidad ejemplares");
+        copies = input.nextInt();        
+        Book book = new Book(isbn, title, copies, 0, copies, author, publisher);
         System.out.println(book.toString());
         try {
             bookDAO.createBook(book);
@@ -177,8 +189,5 @@ public class BookService {
         } catch (Exception e) {
             System.out.println("Continua ejecución del progarama");
         }
-    }
-    
-    
-    
+    }    
 }

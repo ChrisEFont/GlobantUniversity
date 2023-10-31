@@ -175,4 +175,25 @@ public class AuthorService {
             System.out.println("Continua ejecución del progarama");
         }   
     }
+    
+    public static Author getAuthorById(int id) {
+        Author author;
+        try {
+            author = authorDAO.finAuthordById(id);
+            if (author == null) {
+                System.out.println("-------------*------------");
+                System.out.println("No se encontro el ID ingresado");
+                System.out.println("-------------*------------");
+                return null;
+            } else {
+                return author;
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            System.out.println("Continua ejecución del programa");
+            return null;
+        }
+    }
+
+ 
 }
