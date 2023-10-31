@@ -32,6 +32,11 @@ public class Book {
 
     public Book() {
     }
+    
+        public Book(Long isbn, String title) {
+        this.isbn = isbn;
+        this.title = title;
+    }
 
     public Book(Long isbn, String title, Integer copies, Integer copiesBorroweds, Integer copiesAvailable, Author author, Publisher publisher) {
         this.isbn = isbn;
@@ -97,5 +102,10 @@ public class Book {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" + "isbn=" + isbn + ", title=" + title + ", copies=" + copies + ", copiesBorroweds=" + copiesBorroweds + ", copiesAvailable=" + copiesAvailable + ", author=" + author + ", publisher=" + publisher + '}';
     }    
 }

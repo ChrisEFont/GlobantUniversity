@@ -7,6 +7,7 @@ package libreria;
 
 import java.util.Scanner;
 import service.AuthorService;
+import service.BookService;
 import service.PublisherService;
 
 /**
@@ -37,6 +38,9 @@ public class Libreria {
             
             
             switch(option){
+                case 1:
+                    BookService.bookMenu();
+                    break;
                 case 2:
                     AuthorService.authorMenu();
                     break;
