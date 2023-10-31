@@ -97,7 +97,7 @@ public class BookService {
                 System.out.println("No se encontraron coincidencias");
                 System.out.println("-------------*------------");
             } else {
-                //publishers.sort(Publisher.compareName);
+                books.sort(Book.compareTitle);
                 for (Book b : books) {
                     System.out.println(b.toString());
                 }
@@ -181,7 +181,7 @@ public class BookService {
             if (books.isEmpty()) {
                 System.out.println("Sin resultados");
             } else {
-                //publishers.sort(Publisher.compareName);
+                books.sort(Book.compareTitle);
                 for (Book b : books) {
                     System.out.println(b.toString());
                 }

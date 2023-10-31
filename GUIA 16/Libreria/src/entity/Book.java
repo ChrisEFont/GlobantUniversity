@@ -5,6 +5,7 @@
  */
 package entity;
 
+import java.util.Comparator;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -103,6 +104,13 @@ public class Book {
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
+    
+    public static Comparator<Book> compareTitle = new Comparator<Book>() {
+        @Override
+        public int compare(Book b1, Book b2) {
+            return b1.getTitle().compareTo(b2.getTitle());
+        }
+    };
 
     @Override
     public String toString() {
