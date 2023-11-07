@@ -36,8 +36,13 @@ public class NewsController {
     }
     
     @PostMapping("/admin/addNotice")
-    public String addNotice(@RequestParam String title, String text){
-        noticeService.createNotice(title, text, true);        
+    public String addNotice(@RequestParam String title, String text, String visible){
+        if(visible != null){
+            noticeService.createNotice(title, text, true); 
+        }else{
+            noticeService.createNotice(title, text, false); 
+        }
+        System.out.println(visible);
         return "AdminPanel.html";
     }
     

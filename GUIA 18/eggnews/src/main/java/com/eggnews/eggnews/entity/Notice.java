@@ -5,13 +5,16 @@
  */
 package com.eggnews.eggnews.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
@@ -19,27 +22,28 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-
 public class Notice {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+    //@GenericGenerator(name = "native",strategy = "native")
     private int id;
     
     @Temporal (TemporalType.DATE)
-    private Date date;
+    //@Column(name="Notice_Date")
+    private Date noticeDate;
     
-    private String title, text;
+    private String title;
+    
+    //@Column(name="Noticia")
+    private String noticeText;
+    
     private Boolean visible;
     
 
     public Notice() {
-    }
-
-    public Notice(String title, String text, Boolean visible) {
-        id=1;
-        this.title = title;
-        this.text = text;
-        this.visible = visible;
     }
 
     public int getId() {
@@ -50,12 +54,12 @@ public class Notice {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getNoticeDate() {
+        return noticeDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setNoticeDate(Date noticeDate) {
+        this.noticeDate = noticeDate;
     }
 
     public String getTitle() {
@@ -66,12 +70,12 @@ public class Notice {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getNoticeText() {
+        return noticeText;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setNoticeText(String noticeText) {
+        this.noticeText = noticeText;
     }
 
     public Boolean getVisible() {
@@ -80,5 +84,9 @@ public class Notice {
 
     public void setVisible(Boolean visible) {
         this.visible = visible;
-    }   
+    }
+    
+    
+
+
 }

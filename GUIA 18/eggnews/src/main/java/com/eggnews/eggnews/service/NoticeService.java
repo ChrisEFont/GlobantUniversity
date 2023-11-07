@@ -7,6 +7,7 @@ package com.eggnews.eggnews.service;
 
 import com.eggnews.eggnews.entity.Notice;
 import com.eggnews.eggnews.repository.NoticeRepository;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -22,35 +23,34 @@ import org.springframework.stereotype.Service;
 public class NoticeService {
     
     @Autowired
-    private NoticeRepository noticeRpository;
+    private NoticeRepository noticeRepository;
     
-    @Transactional
+    @Transactional    
     public void createNotice(String title, String text, Boolean visible){
         
-        Notice notice = new Notice();
-        
+        Notice notice = new Notice();        
         notice.setTitle(title);
-        notice.setText(text);
+        notice.setNoticeText(text);
         notice.setVisible(visible);
-        
-        noticeRpository.save(notice);        
+        notice.setNoticeDate(new Date());
+        noticeRepository.save(notice);
     }
     
     public List<Notice> getNotices(){
-        List<Notice> notices = noticeRpository.findAll();
+        List<Notice> notices = noticeRepository.findAll();
         return notices;
     }
     
     @Transactional    
     public void editNotice(int id, String title, String text) {
         
-        Optional<Notice> response = noticeRpository.findById(id);
+        Optional<Notice> response = noticeRepository.findById(id);
         
         if(response.isPresent()){
            Notice notice = response.get();
            notice.setTitle(title);
-           notice.setText(text);           
-           noticeRpository.save(notice);
+           notice.setNoticeText(text);           
+           noticeRepository.save(notice);
         }        
     }
     
