@@ -4,18 +4,34 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>Egg News</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     </head>
     <body>
-        <div>
-            <form action="/admin/">
-                <button >ADMIN</button>
-            </form>
-            
-        </div>
+        <header>
+            <h2>Portal noticias Egg</h2>
+        </header>
+        
+        <nav>
+            <div>            
+                <form action="/admin/">                
+                    <button >ADMIN</button>
+                </form>
+            </div>
+        </nav>
+        
+        <article th:each="notice : ${notices}"
+                 th:value="${notice.id}"
+                 th:if="${notice.visible == true}"
+                 >
+            <span th:text="${notice.noticeDate}" type="text" name="noticeText"></span>
+            <h6 th:text="${notice.title}" type="text" name="noticeText"></h6>
+            <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>
+            <br>            
+        </article>       
     </body>
 </html>
