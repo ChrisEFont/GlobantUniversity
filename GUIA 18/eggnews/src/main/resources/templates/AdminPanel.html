@@ -9,21 +9,49 @@ and open the template in the editor.
         <title>Admin Panel</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="adminStyle.css">
     </head>
+    
     <body>
-        <div>
-            <h1>Panel administrador</h1>
-            <form action="/admin/addNotice" method="POST">
-               <div class="form-group">
-                   <input type="text" class="form-group" name="title" placeholder="Título">
-                   <input type="text" class="form-group" name="text" placeholder="Texto"> 
-                   <input type="checkbox" name="visible"><span>Visible</span> 
-                   <button type="submit" class="btn btn-prymary">Publicar</button>                   
-               </div>               
-            </form>
-            <form action="/">
-                <button type="submit">VOLVER A NOTICIAS</button>                
-            </form>
+        
+        <header>
+            <h2>Egg news Admin</h2><br>
+        </header>
+
+        <nav class="navbar sticky-top bg-body-tertiary" style="background-color: #e3f2fd;" id="adminBar">
+            <div>            
+                <form action="/">
+                    <button type="submit" class="btn btn-success">VOLVER A NOTICIAS</button>                
+                </form>
+            </div>
+        </nav><br>
+
+        <div id="adminView">
+            <section>
+                <article class="card border-warning mb-3"  style="width: 18rem;"
+                         th:each="notice : ${notices}"
+                         th:value="${notice.id}"
+                         th:if="${notice.visible == true}"
+                        >
+                    <span th:text="${notice.noticeDate}" type="text" name="noticeText"></span>
+                    <h6 th:text="${notice.title}" type="text" name="noticeText"></h6>
+                    <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>
+                    <br>            
+                </article>
+            </section>
+            <section>
+                <form action="/admin/addNotice" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-group" name="title" placeholder="Título"><br>
+                        <textarea class="form-group" name="text" placeholder="Texto" maxlength="255"></textarea><br> 
+                        <input type="checkbox" name="visible" class="form-check-input"><span> Visible </span><br> 
+                        <button type="submit" class="btn btn-primary">Publicar</button>                   
+                    </div>               
+                </form>
+            </section>
         </div>
     </body>
 </html>
+
+

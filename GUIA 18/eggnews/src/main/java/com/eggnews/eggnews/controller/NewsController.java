@@ -36,7 +36,9 @@ public class NewsController {
     }
     
     @GetMapping ("/admin")
-    public String adminPanel(){
+    public String adminPanel(ModelMap model){
+        List<Notice> notices = noticeService.getNotices();
+        model.addAttribute("notices", notices);     
         return "AdminPanel.html";
     }
     
