@@ -41,15 +41,29 @@ public class NoticeService {
         return notices;
     }
     
+    public Notice getNoticeById(int id){
+    Optional<Notice> response = noticeRepository.findById(id);
+    response = noticeRepository.findById(id);
+    return response.get();
+    }
+    
     @Transactional    
-    public void editNotice(int id, String title, String text) {
+    public void editNotice(int id, String title, String text, Boolean visible) {
         
         Optional<Notice> response = noticeRepository.findById(id);
+        
+        System.out.println("**************Service***************");
+        System.out.println(id);
+        System.out.println(title);
+        System.out.println(text);
+        System.out.println(visible);
+        
         
         if(response.isPresent()){
            Notice notice = response.get();
            notice.setTitle(title);
-           notice.setNoticeText(text);           
+           notice.setNoticeText(text);
+           notice.setVisible(visible);
            noticeRepository.save(notice);
         }        
     }

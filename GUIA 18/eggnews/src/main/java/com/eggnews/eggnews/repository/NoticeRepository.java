@@ -18,9 +18,14 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface NoticeRepository extends JpaRepository<Notice, Integer> {    
+public interface NoticeRepository extends JpaRepository<Notice, Integer> {
     
     @Query("select n from Notice n where n.title =: title")
     public List<Notice> findByTitle(@Param("title") String title);
+
+//    @Query("select n from Notice n where n.id =: id")
+//    public Notice findById(@Param("id") int id);
     
 }
+
+

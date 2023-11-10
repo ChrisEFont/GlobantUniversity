@@ -36,10 +36,11 @@ header{
     border-style: solid;
     border-width: 3px;
     border-color: tomato;
-    background-color: tomato;
+    background-color: inherit;
 }
 
 section{
+    width: 50%;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -49,10 +50,21 @@ section{
     border-color: tomato;
 }
 
-article{
-    background-color: blue;
-    border-style: solid;
-    border-width: 20px;
-    border-color: green;    
+#noticeSection{
+    displey: flex;
+    align-items: top;
+    overflow: auto;
+    max-height: 500px;
+    vertical-align: top;   
 }
+
+#noticeBtn{
+    display: flex;
+    flex-direction: row;    
+}
+
+#noticeSection>article{
+ 
+}
+
 

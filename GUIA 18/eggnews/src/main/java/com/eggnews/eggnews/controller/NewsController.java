@@ -39,7 +39,7 @@ public class NewsController {
     public String adminPanel(ModelMap model){
         List<Notice> notices = noticeService.getNotices();
         model.addAttribute("notices", notices);     
-        return "AdminPanel.html";
+        return "adminPanel.html";
     }
     
     @PostMapping("/admin/addNotice")
@@ -49,10 +49,26 @@ public class NewsController {
         }else{
             noticeService.createNotice(title, text, false); 
         }
-        System.out.println(visible);
-        return "AdminPanel.html";
+        return "adminPanel.html";
     }
     
+    @GetMapping("/admin/editNotice")
+    public String editNotice(Integer id, ModelMap model){
+        Notice notice = noticeService.getNoticeById(id);
+        System.out.println(id);
+        model.addAttribute(notice);
+        return "editNotice.html";
+    }
     
-    
+    @PostMapping("/admin/saveChanges")
+    public String saveChanges(@RequestParam Integer id, String title, String text, String visible){
+        System.out.println(title);
+        
+        if(visible != null){
+            noticeService.editNotice(id, title, text, true);            
+        }else{
+            noticeService.editNotice(id, title, text, false);
+        }                
+        return "adminPanel.html";
+    }
 }
