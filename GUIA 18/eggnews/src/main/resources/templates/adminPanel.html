@@ -38,12 +38,12 @@ and open the template in the editor.
                     <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>
                     <br>
                     <div id="noticeBtn">
-                        <form action="/admin/editNotice">
-                            <p readonline class="form-group" th:text="${notice.id}"></p>
+                        <p readonline class="form-group" th:text="${notice.id}"></p>
+                        <form action="/admin/editNotice">                            
                             <button type="submit" class="btn btn-info" name="id" th:value="${notice.id}">EDIT</button>               
                         </form>
-                        <form action="/">
-                            <button type="submit" class="btn btn-danger">DELETE</button>                            
+                        <form action="/admin/deleteNotice">
+                            <button type="submit" class="btn btn-danger" name="id" th:value="${notice.id}">DELETE</button>                            
                         </form>                                               
                     </div>
                 </article>

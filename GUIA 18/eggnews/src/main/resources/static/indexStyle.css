@@ -44,6 +44,7 @@ article{
     background-color: blue;
     border-style: solid;
     border-width: 20px;
-    border-color: green;    
+    border-color: green;
+    box-shadow: 10px 10px 20px lightblue;
 }
 

@@ -71,4 +71,12 @@ public class NewsController {
         }                
         return "adminPanel.html";
     }
+    
+    @GetMapping("/admin/deleteNotice")
+    public String deleteNotice(Integer id, ModelMap model){
+//        Notice notice = noticeService.getNoticeById(id);
+        System.out.println(id);
+        noticeService.deleteNotice(id);
+        return "adminPanel.html";
+    }
 }

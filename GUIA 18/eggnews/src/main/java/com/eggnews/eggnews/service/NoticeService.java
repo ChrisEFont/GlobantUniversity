@@ -65,9 +65,20 @@ public class NoticeService {
            notice.setNoticeText(text);
            notice.setVisible(visible);
            noticeRepository.save(notice);
-        }        
+        }       
     }
-    
-    
+
+    @Transactional
+    public void deleteNotice(int id){
+        
+        System.out.println("Service");
+        
+        Optional<Notice> response = noticeRepository.findById(id);
+        
+        if (response.isPresent()) {
+            Notice notice = response.get();
+            noticeRepository.delete(notice);
+        }       
+    }
     
 }
