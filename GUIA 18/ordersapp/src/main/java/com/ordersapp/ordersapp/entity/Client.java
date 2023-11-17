@@ -25,6 +25,9 @@ public class Client {
     private String name, email, phone;
     private boolean active;
 
+    public Client() {
+    }    
+
     public Client(String name, String email, String phone) {
         this.name = name;
         this.email = email;

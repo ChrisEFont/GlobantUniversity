@@ -14,10 +14,10 @@ import javax.persistence.Converter;
  * @author chris
  */
 
-@Converter
+
 public class ClientConverter {
     
-    public static ClientDTO clienToClientDTO(Client client){
+    public ClientDTO clienToClientDTO(Client client){
         int id = client.getId();
         String name = client.getName();
         String email = client.getEmail();

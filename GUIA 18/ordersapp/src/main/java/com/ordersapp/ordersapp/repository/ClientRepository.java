@@ -20,10 +20,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer>{
     
-    @Query("select c from Client c where c.name like=: name")
-    public List<Client> findByName(@Param("%name%")String name);
-    
-    @Query("select c from Client where c.email like=: email")
-    public List<Client> findByEmail(@Param("%email%")String email);
+//    @Query("select c from Client c where c.name =: name")
+//    public List<Client> findByName(@Param("name")String name);
+//    
+//    @Query("select c from Client where c.email =: email")
+//    public List<Client> findByEmail(@Param("email")String email);
     
 }

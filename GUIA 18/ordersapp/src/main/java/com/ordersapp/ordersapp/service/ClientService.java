@@ -25,6 +25,9 @@ public class ClientService {
     @Autowired
     ClientRepository clientRepository;
     
+//  @Autowired
+    ClientConverter clientConverter = new ClientConverter();
+    
     public Client create(String name, String email, String phone){
         Client client = new Client(name, email, phone);        
         return client;
@@ -35,19 +38,20 @@ public class ClientService {
     }
     
     public ClientDTO getById(int id){
+        System.out.println("Service");
         Optional<Client> client = clientRepository.findById(id);
-        ClientDTO clientDTO = ClientConverter.clienToClientDTO(client.get());
+        ClientDTO clientDTO = clientConverter.clienToClientDTO(client.get());
         return clientDTO;        
     }
     
-    public List<Client>getByName(String name){
-        List<Client> clients = clientRepository.findByName(name);
-        return clients;
-    }
-    
-    public List<Client>getByEmail(String email){
-        List<Client> clients = clientRepository.findByEmail(email);
-        return clients;
-    }   
+//    public List<Client>getByName(String name){
+//        List<Client> clients = clientRepository.findByName(name);
+//        return clients;
+//    }
+//    
+//    public List<Client>getByEmail(String email){
+//        List<Client> clients = clientRepository.findByEmail(email);
+//        return clients;
+//    }   
     
 }
