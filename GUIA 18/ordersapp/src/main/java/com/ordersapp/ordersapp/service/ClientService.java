@@ -44,14 +44,19 @@ public class ClientService {
         return clientDTO;        
     }
     
-//    public List<Client>getByName(String name){
-//        List<Client> clients = clientRepository.findByName(name);
-//        return clients;
-//    }
-//    
-//    public List<Client>getByEmail(String email){
-//        List<Client> clients = clientRepository.findByEmail(email);
-//        return clients;
-//    }   
+    public List<Client> getAll(){
+        List<Client> clients = clientRepository.findAll();
+        return clients;        
+    }
+    
+    public List<Client> getByName(String name){
+        List<Client> clients = clientRepository.findByName("%"+name+"%");
+        return clients;
+    }
+    
+    public List<Client>getByEmail(String email){
+        List<Client> clients = clientRepository.findByEmail("%"+email+"%");
+        return clients;
+    }   
     
 }
