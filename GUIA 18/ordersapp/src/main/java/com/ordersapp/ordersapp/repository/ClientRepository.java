@@ -26,4 +26,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer>{
     @Query("select c from Client c where c.email Like :email")
     public List<Client> findByEmail(@Param("email")String email);
     
+    public List<Client> findByNameContains(String name);
+    
 }

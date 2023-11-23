@@ -11,14 +11,15 @@ import com.ordersapp.ordersapp.entity.Client;
 import com.ordersapp.ordersapp.service.ClientService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-
-
-
 
 /**
  *
@@ -45,24 +46,39 @@ public class ClientController {
         return clientDTO;
     }
     
-        @GetMapping("/getall")
+    @GetMapping("/getall")
+    @ResponseStatus(HttpStatus.OK)    
     public List<Client> getAll(){
     return clientService.getAll();        
     }    
     
-    
     @GetMapping("/getbyid/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ClientDTO getById(@PathVariable int id){
         return clientService.getById(id);
     }
     
     @GetMapping("/getbyname/{name}")
+    @ResponseStatus(HttpStatus.OK)
     public List<Client> getByName(@PathVariable String name){
         return clientService.getByName(name);
     }
     
     @GetMapping("/getbyemail/{email}")
+    @ResponseStatus(HttpStatus.OK)
     public List<Client> getByEmail(@PathVariable String email) {
         return clientService.getByEmail(email);
-    }    
+    }
+    
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client saveClient(@RequestBody Client client){
+        return clientService.save(client);
+    }
+    
+    @PutMapping("/edit")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Client editClient(@RequestBody Client client){
+        return clientService.edit(client);
+    }
 }

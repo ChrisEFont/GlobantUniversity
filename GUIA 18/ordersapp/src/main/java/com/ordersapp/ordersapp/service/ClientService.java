@@ -11,6 +11,7 @@ import com.ordersapp.ordersapp.entity.Client;
 import com.ordersapp.ordersapp.repository.ClientRepository;
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,9 +55,19 @@ public class ClientService {
         return clients;
     }
     
-    public List<Client>getByEmail(String email){
+    public List<Client> getByEmail(String email){
         List<Client> clients = clientRepository.findByEmail("%"+email+"%");
         return clients;
-    }   
+    }
+    
+    @Transactional
+    public Client save(Client client){
+        return clientRepository.save(client);        
+    }
+    
+    @Transactional
+    public Client edit(Client client){
+        return clientRepository.save(client);
+    }
     
 }
