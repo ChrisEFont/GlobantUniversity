@@ -39,5 +39,56 @@ public class SaleOrder {
     @OneToMany(fetch=FetchType.EAGER)
     private List<Product> products;
     
-    private OrderState state;   
+    private OrderState state;
+
+    public SaleOrder() {
+    }
+
+    public SaleOrder(int id, Date orderDate, Client client, List<Product> products, OrderState state) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.client = client;
+        this.products = products;
+        this.state = state;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public OrderState getState() {
+        return state;
+    }
+
+    public void setState(OrderState state) {
+        this.state = state;
+    }    
 }

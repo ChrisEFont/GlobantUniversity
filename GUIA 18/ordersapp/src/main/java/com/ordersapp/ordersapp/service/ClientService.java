@@ -8,7 +8,9 @@ package com.ordersapp.ordersapp.service;
 import com.ordersapp.ordersapp.DTO.ClientDTO;
 import com.ordersapp.ordersapp.converter.ClientConverter;
 import com.ordersapp.ordersapp.entity.Client;
+import com.ordersapp.ordersapp.exception.NonClientException;
 import com.ordersapp.ordersapp.repository.ClientRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -21,23 +23,13 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class ClientService {
+public class ClientService {    
     
     @Autowired
-    ClientRepository clientRepository;
-    
-//  @Autowired
+    ClientRepository clientRepository;    
+
     ClientConverter clientConverter = new ClientConverter();
-    
-    public Client create(String name, String email, String phone){
-        Client client = new Client(name, email, phone);        
-        return client;
-    }
-    
-    public void add(Client client){
-        clientRepository.save(client);
-    }
-    
+        
     public ClientDTO getById(int id){
         System.out.println("Service");
         Optional<Client> client = clientRepository.findById(id);
@@ -45,29 +37,56 @@ public class ClientService {
         return clientDTO;        
     }
     
-    public List<Client> getAll(){
-        List<Client> clients = clientRepository.findAll();
-        return clients;        
+    public List<ClientDTO> getAll(){
+        List<Client> clients = new ArrayList();
+        ClientDTO clientDTO = new ClientDTO();
+        List<ClientDTO> clientDTOS = new ArrayList();
+        clients = clientRepository.findAll();
+        for (Client c : clients) {
+            clientDTO = clientConverter.clienToClientDTO(c);
+            clientDTOS.add(clientDTO);
+        }
+        return clientDTOS;     
     }
     
-    public List<Client> getByName(String name){
-        List<Client> clients = clientRepository.findByName("%"+name+"%");
-        return clients;
+    public List<ClientDTO> getByName(String name){
+        List<Client> clients = new ArrayList();
+        ClientDTO clientDTO = new ClientDTO();
+        List<ClientDTO> clientDTOS = new ArrayList();
+        clients = clientRepository.findByName("%" + name + "%");
+        for (Client c : clients) {
+            clientDTO = clientConverter.clienToClientDTO(c);
+            clientDTOS.add(clientDTO);
+        }
+        return clientDTOS;
     }
     
-    public List<Client> getByEmail(String email){
-        List<Client> clients = clientRepository.findByEmail("%"+email+"%");
-        return clients;
+    public List<ClientDTO> getByEmail(String email){
+        List<Client> clients = new ArrayList();
+        ClientDTO clientDTO = new ClientDTO();
+        List<ClientDTO> clientDTOS = new ArrayList();
+        clients = clientRepository.findByEmail("%" + email + "%");
+        for (Client c : clients) {
+            clientDTO = clientConverter.clienToClientDTO(c);
+            clientDTOS.add(clientDTO);
+        }
+        return clientDTOS;
     }
     
     @Transactional
-    public Client save(Client client){
+    public Client save(ClientDTO clientDTO){
+        Client client = new Client();
+        client = clientConverter.clientDTOToClient(clientDTO);
         return clientRepository.save(client);        
     }
     
     @Transactional
-    public Client edit(Client client){
-        return clientRepository.save(client);
-    }
-    
+    public void update(ClientDTO clientDTO) throws NonClientException{
+        if (clientRepository.existsById(clientDTO.getId())) {
+            Client client = clientConverter.clientDTOToClient(clientDTO);
+            clientRepository.save(client);
+        } else {
+            throw new NonClientException("Id does not exist");
+        }
+    }    
 }

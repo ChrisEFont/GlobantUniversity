@@ -1,37 +1,26 @@
-package com.ordersapp.ordersapp.entity;
-
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.ordersapp.ordersapp.DTO;
 
 /**
  *
  * @author chris
  */
-
-@Entity
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDTO {
+    
     private int id;
     private int stock;
     private String name;
     private float price;
     boolean active;
 
-    public Product() {
+    public ProductDTO() {
     }
 
-    public Product(int id, int stock, String name, float price, boolean active) {
+    public ProductDTO(int id, int stock, String name, float price, boolean active) {
         this.id = id;
         this.stock = stock;
         this.name = name;
@@ -79,5 +68,7 @@ public class Product {
         this.active = active;
     }
     
+    
 
+    
 }

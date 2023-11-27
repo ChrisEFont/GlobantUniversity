@@ -26,6 +26,14 @@ public class Client {
     private boolean active;
 
     public Client() {
+    }
+
+    public Client(int id, String name, String email, String phone, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.active = active;
     }    
 
     public Client(String name, String email, String phone) {
@@ -69,4 +77,11 @@ public class Client {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", active=" + active + '}';
+    }
+    
+    
 }

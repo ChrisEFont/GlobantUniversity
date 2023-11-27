@@ -33,7 +33,7 @@ public class ClientConverter {
         String email = clientDTO.getEmail();
         String phone = clientDTO.getPhone();
         Boolean active = clientDTO.isActive();
-        Client client = new Client(name, email, phone);
+        Client client = new Client(id, name, email, phone, active);
         return client;
     }
     

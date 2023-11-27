@@ -6,12 +6,13 @@
 package com.ordersapp.ordersapp.controller;
 
 import com.ordersapp.ordersapp.DTO.ClientDTO;
-import com.ordersapp.ordersapp.converter.ClientConverter;
 import com.ordersapp.ordersapp.entity.Client;
+import com.ordersapp.ordersapp.exception.NonClientException;
 import com.ordersapp.ordersapp.service.ClientService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,58 +28,70 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/clients")
 
 public class ClientController {
     
     @Autowired
     private ClientService clientService;
-        
-//    @Autowired
+    //private ClientService clientService = new ClientService();
     
-    private ClientConverter clientConverter = new ClientConverter();
-    
-    @GetMapping("/create")
-    public ClientDTO createClient(String name, String email, String phone){
-        Client client = clientService.create(name, email, phone); 
-        clientService.add(client);
-        ClientDTO clientDTO = clientConverter.clienToClientDTO(client);
-        return clientDTO;
-    }
-    
-    @GetMapping("/getall")
+    @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)    
-    public List<Client> getAll(){
+    public List<ClientDTO> getAll(){
     return clientService.getAll();        
     }    
     
-    @GetMapping("/getbyid/{id}")
+    @GetMapping("/find-id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ClientDTO getById(@PathVariable int id){
         return clientService.getById(id);
     }
     
-    @GetMapping("/getbyname/{name}")
+    @GetMapping("/find-name/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Client> getByName(@PathVariable String name){
+    public List<ClientDTO> getByName(@PathVariable String name){
         return clientService.getByName(name);
     }
     
-    @GetMapping("/getbyemail/{email}")
+    @GetMapping("/find-email/{email}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Client> getByEmail(@PathVariable String email) {
+    public List<ClientDTO> getByEmail(@PathVariable String email) {
         return clientService.getByEmail(email);
     }
     
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client saveClient(@RequestBody Client client){
-        return clientService.save(client);
+    public Client saveClient(@RequestBody ClientDTO clientDTO){
+        return clientService.save(clientDTO);
     }
     
-    @PutMapping("/edit")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Client editClient(@RequestBody Client client){
-        return clientService.edit(client);
+    public void updateClient(@RequestBody ClientDTO clientDTO){
+        try {
+            clientService.update(clientDTO);
+        } catch (NonClientException e) {
+            IdNotFoundResponse(e);
+        }
+    }
+    
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String IdNotFoundResponse(Exception e){
+        System.out.println(e.getMessage());
+        return e.getMessage();
+    }
+    
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String errorReponse(Exception e) {
+        return "Se ha producido un error";
+    }
+    
+    @GetMapping("/prueba")
+    @ResponseStatus(HttpStatus.TEMPORARY_REDIRECT)
+    public String prueba(){
+        return "Se devuelve este string";
     }
 }
