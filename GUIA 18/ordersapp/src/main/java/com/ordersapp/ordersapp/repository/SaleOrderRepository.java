@@ -7,11 +7,14 @@ package com.ordersapp.ordersapp.repository;
 
 import com.ordersapp.ordersapp.entity.SaleOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author chris
  */
-public interface SalesOrderRepository extends JpaRepository<SaleOrder, Integer>{
+
+@Repository
+public interface SaleOrderRepository extends JpaRepository<SaleOrder, Integer>{
     
 }

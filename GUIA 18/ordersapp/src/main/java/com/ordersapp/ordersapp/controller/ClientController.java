@@ -68,23 +68,18 @@ public class ClientController {
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void updateClient(@RequestBody ClientDTO clientDTO){
-        try {
-            clientService.update(clientDTO);
-        } catch (NonClientException e) {
-            IdNotFoundResponse(e);
-        }
+    public void updateClient(@RequestBody ClientDTO clientDTO) throws Exception{
+        clientService.update(clientDTO);
     }
     
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(NonClientException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String IdNotFoundResponse(Exception e){
-        System.out.println(e.getMessage());
+    public String handleException(NonClientException e){
         return e.getMessage();
     }
     
     @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String errorReponse(Exception e) {
         return "Se ha producido un error";
     }
