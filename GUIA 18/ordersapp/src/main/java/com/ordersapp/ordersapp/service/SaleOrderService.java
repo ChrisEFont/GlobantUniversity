@@ -7,8 +7,6 @@ package com.ordersapp.ordersapp.service;
 
 import com.ordersapp.ordersapp.DTO.SaleOrderDTO;
 import com.ordersapp.ordersapp.converter.SaleOrderConverter;
-import com.ordersapp.ordersapp.entity.Client;
-import com.ordersapp.ordersapp.entity.Product;
 import com.ordersapp.ordersapp.entity.SaleOrder;
 import com.ordersapp.ordersapp.repository.SaleOrderRepository;
 import java.util.ArrayList;
@@ -31,6 +29,19 @@ public class SaleOrderService {
     
     SaleOrderConverter saleOrderConverter = new SaleOrderConverter();
     
+    public List<SaleOrderDTO> getAll(){
+        List<SaleOrder> saleOrders;
+        List<SaleOrderDTO> saleOrderDTOS = new ArrayList();
+        SaleOrder saleOrder;
+        SaleOrderDTO saleOrderDTO;        
+        saleOrders = saleOrderRepository.findAll();
+        for(SaleOrder s: saleOrders){
+            saleOrderDTO = saleOrderConverter.saleOrderToSaleOrderDTO(s);
+            saleOrderDTOS.add(saleOrderDTO);
+        }
+        return saleOrderDTOS;        
+    }
+    
     public SaleOrderDTO getById(int id){
         Optional<SaleOrder> saleOrder = saleOrderRepository.findById(id);
         SaleOrderDTO saleOrderDTO = saleOrderConverter.saleOrderToSaleOrderDTO(saleOrder.get());
@@ -38,28 +49,16 @@ public class SaleOrderService {
     }
     
     @Transactional
-    public SaleOrder save(){
-        //SaleOrder saleOrder = saleOrderConverter.saleOrderDTOToSaleOrder(saleOrderDTO);
-        Product p1 = new Product();
-        p1.setId(1);
-        Product p2 = new Product();
-        p2.setId(2);
-        List<Product> prod = new ArrayList();
-        prod.add(p1);
-        prod.add(p2);
-        
-        Client client = new Client();
-        
-        client.setId(1);
-        client.setName("Cosme Fulanito");
-        
-        SaleOrder saleOrder = new SaleOrder();
-        
-        saleOrder.setProducts(prod);
-        saleOrder.setClient(client);
-        
+    public SaleOrder save(SaleOrderDTO saleOrderDTO){
+        SaleOrder saleOrder = saleOrderConverter.saleOrderDTOToSaleOrder(saleOrderDTO);        
         return saleOrderRepository.save(saleOrder);
     }
-
+    
+    @Transactional
+    public void update(SaleOrderDTO saleOrderDTO){
+        SaleOrder saleOrder;
+        saleOrder = saleOrderConverter.saleOrderDTOToSaleOrder(saleOrderDTO);
+        saleOrderRepository.save(saleOrder);        
+    }
     
 }
