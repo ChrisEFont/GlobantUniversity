@@ -7,8 +7,10 @@ package com.eggnews.eggnews.controller;
 
 import com.eggnews.eggnews.entity.Notice;
 import com.eggnews.eggnews.service.NoticeService;
+import com.eggnews.eggnews.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,9 @@ public class NewsController {
     
     @Autowired
     private NoticeService noticeService;
+    
+    @Autowired
+    private UserService userService;
     
     @GetMapping("/")
     public String index(ModelMap model){
@@ -78,5 +83,17 @@ public class NewsController {
         System.out.println(id);
         noticeService.deleteNotice(id);
         return "adminPanel.html";
+    }
+    
+    @GetMapping("/sign-in")
+    public String signIn(){
+        return "signIn.html";
+    }
+    
+    @PostMapping("/register")
+    public String signIn(@RequestParam String userName, @RequestParam String email, @RequestParam String password, ModelMap model){
+        
+        userService.register(userName, email, password);
+        return "index.html";
     }
 }
