@@ -20,6 +20,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -44,7 +45,7 @@ public class UserService implements UserDetailsService{
         
         userAPP.setName(name);
         userAPP.setEmail(email);
-        userAPP.setPassword(password);
+        userAPP.setPassword(new BCryptPasswordEncoder().encode(password));
         userAPP.setRol(Rol.USER);
         
         userAPPRepository.save(userAPP);
@@ -59,9 +60,10 @@ public class UserService implements UserDetailsService{
         UserAPP userAPP = userAPPRepository.findByEmail(email);
         
         if(userAPP != null){
+            
             List<GrantedAuthority> permissions = new ArrayList<>();
-            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + userAPP.getRol().toString());
-            permissions.add(p);
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + userAPP.getRol().toString());            
+            permissions.add(p);            
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("user", p);

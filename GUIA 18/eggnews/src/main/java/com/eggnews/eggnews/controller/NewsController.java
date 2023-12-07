@@ -40,6 +40,7 @@ public class NewsController {
         return "index.html";        
     }
     
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping ("/admin")
     public String adminPanel(ModelMap model){
         List<Notice> notices = noticeService.getNotices();
@@ -91,9 +92,24 @@ public class NewsController {
     }
     
     @PostMapping("/register")
-    public String signIn(@RequestParam String userName, @RequestParam String email, @RequestParam String password, ModelMap model){
-        
+    public String registrer(@RequestParam String userName, @RequestParam String email, @RequestParam String password, ModelMap model){        
         userService.register(userName, email, password);
         return "index.html";
     }
+    
+    @GetMapping("/login")
+    public String logIn(){
+        return "logIn.html";
+    }
+    
+    @PostMapping("/loginChek")
+    public String logincheck(@RequestParam String email, @RequestParam String password, ModelMap model){
+        return "index.html";
+    }
+    
+    @GetMapping("/loged")
+    public String loged(){
+       return "index.html";
+    }
+    
 }
