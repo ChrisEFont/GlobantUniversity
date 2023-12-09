@@ -33,8 +33,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userService)
                 .passwordEncoder(new BCryptPasswordEncoder());
-    }
-    
+    }    
     
     @Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -55,13 +54,5 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                 .permitAll()
             .and().csrf()
                 .disable();       
-    }
-    
-    
-
-
-
-    
-    
-    
+    }    
 }

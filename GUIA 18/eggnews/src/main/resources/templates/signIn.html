@@ -5,11 +5,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+
+    <head th:replace="/fragments/head :: head"></head>
+
     <body>
         <h1>Registrar Usuario</h1>
 
@@ -20,7 +18,24 @@ and open the template in the editor.
             <input type="text" id="email" name="email" th:value="${email}"><br><br>
             <label for="password">password:</label>
             <input type="text" id="password" name="password" th:value="${password}"><br><br>
+            <label for="passwordVerification">password:</label>
+            <input type="text" id="passwordVerification" name="passwordVerification" th:value="${passwordVerification}"><br><br>
             <input type="submit">
         </form>
+
+        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+            <div class="card-body">
+                <h5 class="card-title">Error!</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </div>
+
+        <div th:if="${succes != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card-text" th:text="${succes}"></p>
+            </div>
+        </div>
+
     </body>
 </html>

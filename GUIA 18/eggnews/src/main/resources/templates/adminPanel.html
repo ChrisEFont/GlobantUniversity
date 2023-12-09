@@ -5,34 +5,20 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>Admin Panel</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../adminStyle.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">        
-    </head>
     
+    <head th:replace="/fragments/head :: head"></head>
+
     <body>
+
+        <header th:replace="/fragments/header :: header"></header>
+        <nav th:replace="fragments/navbar :: nav"></nav>        
         
-        <header>
-            <h2>Egg news Admin</h2><br>
-        </header>
-
-        <nav class="navbar sticky-top bg-body-tertiary" style="background-color: #e3f2fd;" id="adminBar">
-            <div>            
-                <form action="/">
-                    <button type="submit" class="btn btn-success">VOLVER A NOTICIAS</button>                
-                </form>
-            </div>
-        </nav><br>
-
         <div id="adminView">
             <section id="noticeSection">
                 <article class="card border-warning mb-3"  style="width: 18rem;"
                          th:each="notice : ${notices}"
                          th:value="${notice.id}"                         
-                        >
+                         >
                     <span th:text="${notice.noticeDate}" type="text" name="noticeText"></span>
                     <h6 th:text="${notice.title}" type="text" name="noticeText"></h6>
                     <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>

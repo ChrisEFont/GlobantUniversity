@@ -19,7 +19,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class UserAPP {
+public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class UserAPP {
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    public UserAPP() {
+    public AppUser() {
     }
 
     public Long getId() {
@@ -73,12 +73,5 @@ public class UserAPP {
 
     public void setRol(Rol rol) {
         this.rol = rol;
-    }
-
-    @Override
-    public String toString() {
-        return "UserAPP{" + "id=" + id + ", userName=" + userName + ", password=" + password + ", email=" + email + ", rol=" + rol + '}';
-    }
-
-    
+    }    
 }

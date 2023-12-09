@@ -5,26 +5,14 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Egg News</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../indexStyle.css">
-    </head>
+    
+    <head th:replace="/fragments/head :: head"></head>
+    
     <body>
         
-        <header>
-            <h2>Egg news!</h2><br>
-        </header>
+        <header th:replace="/fragments/header :: header"></header>
+        <nav th:replace="fragments/navbar :: nav"></nav>
         
-        <nav class="navbar sticky-top bg-body-tertiary" style="background-color: #e3f2fd;" id="indexBar">
-            <div>            
-                <form action="/admin/">                
-                    <button class="btn btn-primary">ADMIN</button>
-                </form>
-            </div>
-        </nav><br>
         
         <section>
             <article class="card border-warning mb-3"  style="width: 18rem;"

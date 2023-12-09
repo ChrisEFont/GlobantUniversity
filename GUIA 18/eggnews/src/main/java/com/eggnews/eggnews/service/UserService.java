@@ -5,9 +5,11 @@
  */
 package com.eggnews.eggnews.service;
 
-import com.eggnews.eggnews.entity.UserAPP;
+import com.eggnews.eggnews.entity.AppUser;
 import com.eggnews.eggnews.enums.Rol;
-import com.eggnews.eggnews.repository.UserAPPRepository;
+import com.eggnews.eggnews.repository.AppUserRepository;
+import com.eggnews.eggnews.utilities.PasswordValidator;
+import exception.AppException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,42 +36,69 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class UserService implements UserDetailsService{
     
     @Autowired
-    private UserAPPRepository userAPPRepository;
+    private AppUserRepository appUserRepository;
     
     @Transactional
-    public void register(String name, String email, String password){
+    public void register(String name, String email, String password, String passwordVerification) throws AppException{
         
-        System.out.println(name + password + email );
+        validate(name, email, password, passwordVerification);
         
-        UserAPP userAPP = new UserAPP();
+        AppUser appUser = new AppUser();
         
-        userAPP.setName(name);
-        userAPP.setEmail(email);
-        userAPP.setPassword(new BCryptPasswordEncoder().encode(password));
-        userAPP.setRol(Rol.USER);
+        appUser.setName(name);
+        appUser.setEmail(email);
+        appUser.setPassword(new BCryptPasswordEncoder().encode(password));
+        appUser.setRol(Rol.USER);
         
-        userAPPRepository.save(userAPP);
-        
-        System.out.println(userAPP.toString());
-        
+        appUserRepository.save(appUser);        
     }
-
+    
+    private void validate(String name, String email, String password, String passwordVerification) throws AppException{
+        
+        if(name.isEmpty() || name == null){
+            throw new AppException("The name can not be null or empty");            
+        }
+        
+        if(email.isEmpty() || email == null){
+            throw new AppException("The email can not be null or empty");
+        }
+        
+        switch(PasswordValidator.validate(password, passwordVerification)){
+            case 1:
+                throw new AppException("The password can not be null or empty");
+            case 2:
+                throw new AppException("The must have 8 character at least");
+            case 3:
+                throw new AppException("The passwords does not match");
+            case 4:
+                throw new AppException("The password must contains a number");
+            case 5:
+                throw new AppException("The password must contains a upper case");
+            case 6:
+                throw new AppException("The password must constains a lower case");
+            case 0:           
+        }
+        
+        if(appUserRepository.findByEmail(email)!=null){
+            throw new AppException("The email has already been registered");
+        }
+    }
+    
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         
-        UserAPP userAPP = userAPPRepository.findByEmail(email);
+        AppUser appUser = appUserRepository.findByEmail(email);
         
-        if(userAPP != null){
-            
+        if(appUser != null){            
             List<GrantedAuthority> permissions = new ArrayList<>();
-            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + userAPP.getRol().toString());            
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + appUser.getRol().toString());            
             permissions.add(p);            
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession(true);
             session.setAttribute("user", p);
-            return new User(userAPP.getEmail(), userAPP.getPassword(), permissions);
-        }else{
-            return null;
+            return new User(appUser.getEmail(), appUser.getPassword(), permissions);            
+        }else{            
+            return null;            
         }        
     }    
 }

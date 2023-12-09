@@ -1,0 +1,8 @@
+<nav class="navbar sticky-top bg-body-tertiary" style="background-color: #e3f2fd;" id="indexBar">
+    <div>
+        <a class="btn btn-primary" href="/admin/">ADMIN</a>
+        <a class="btn btn-primary" href="/sign-up">SIGN UP</a>
+        <a class="btn btn-primary" href="/index">HOME</a>
+        <a class="btn btn-primary" href="/logout" sec:authorize="hasRole('USER')">Log Out</a>
+    </div>
+</nav><br>
