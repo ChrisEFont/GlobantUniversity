@@ -8,24 +8,9 @@ and open the template in the editor.
     
     <head th:replace="/fragments/head :: head"></head>
     
-    <body>
-        
+    <body id="index">        
         <header th:replace="/fragments/header :: header"></header>
         <nav th:replace="fragments/navbar :: nav"></nav>
-        
-        
-        <section>
-            <article class="card border-warning mb-3"  style="width: 18rem;"
-                     th:each="notice : ${notices}"
-                     th:value="${notice.id}"
-                     th:if="${notice.visible == true}"
-                    >
-                <span th:text="${notice.noticeDate}" type="text" name="noticeText"></span>
-                <h6 th:text="${notice.title}" type="text" name="noticeText"></h6>
-                <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>
-                <br>            
-            </article>            
-        </section>       
-      
+        <section th:replace="fragments/notice :: section"></section>      
     </body>
 </html>

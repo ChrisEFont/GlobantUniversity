@@ -1,0 +1,11 @@
+<section>
+    <span>Crear una nueva noticia</span>
+    <form action="/admin/addNotice" method="POST">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="title" placeholder="Título"><br>
+            <textarea class="form-control" name="text" placeholder="Texto" maxlength="255"></textarea><br> 
+            <input type="checkbox" name="visible" class="form-check-input"><span> Visible </span><br> 
+            <button type="submit" class="btn btn-primary">Publicar</button>                   
+        </div>               
+    </form>
+</section>

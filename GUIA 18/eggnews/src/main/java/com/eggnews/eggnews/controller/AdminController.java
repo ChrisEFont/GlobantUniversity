@@ -9,7 +9,6 @@ import com.eggnews.eggnews.entity.Notice;
 import com.eggnews.eggnews.service.NoticeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+//@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 @RequestMapping("/admin")
 public class AdminController {
     
@@ -31,6 +30,7 @@ public class AdminController {
     
     @GetMapping("/")
     public String adminPanel(ModelMap model) {
+        model.put("place", "admin");
         List<Notice> notices = noticeService.getNotices();
         model.addAttribute("notices", notices);
         return "adminPanel.html";
@@ -63,12 +63,11 @@ public class AdminController {
         } else {
             noticeService.editNotice(id, title, text, false);
         }
-        return "adminPanel.html";
+        return "redirect:/admin/";
     }
     
     @GetMapping("/admin/deleteNotice")
     public String deleteNotice(Integer id, ModelMap model) {
-//        Notice notice = noticeService.getNoticeById(id);
         System.out.println(id);
         noticeService.deleteNotice(id);
         return "adminPanel.html";

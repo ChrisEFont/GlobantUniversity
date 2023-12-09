@@ -26,6 +26,7 @@ public class IndexController {
     
     @GetMapping("")
     public String index(ModelMap model) {
+        model.put("place", "home");
         List<Notice> notices = noticeService.getNotices();
         model.addAttribute("notices", notices);
         return "index.html";

@@ -8,26 +8,8 @@ and open the template in the editor.
     Author     : chris
 */
 
-
-
-body{
-    align-items: center; 
-    justify-content: center;
-    border-style: solid;
-    border-width: 3px;
-    background-color: tomato;
-}
-
-header{
-    padding: 1rem;
-    text-align: center;
-    color: darkgray;
-    font-size: 16;
-    background-color: yellow;
-}
-
-#adminBar{
-    padding: 1rem;    
+#admin section{
+    width: 100%;
 }
 
 #adminView{
@@ -36,26 +18,18 @@ header{
     border-style: solid;
     border-width: 3px;
     border-color: tomato;
-    background-color: inherit;
+    background-color: red;
 }
 
-section{
-    width: 50%;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    border-width: 3px;
-    border-color: tomato;
-}
 
 #noticeSection{
     displey: flex;
     align-items: top;
     overflow: auto;
     max-height: 500px;
-    vertical-align: top;   
+    vertical-align: top;
+    border-width: 3px;
+    border-color: tomato;
 }
 
 #noticeBtn{

@@ -20,5 +20,13 @@ and open the template in the editor.
             <input type="text" id="password" name="password"><br><br>
             <input type="submit">
         </form>
+
+        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+            <div class="card-body">
+                <h5 class="card-title">Error!</h5>
+                <p class="card-text" th:text="${error}"></p>
+            </div>
+        </div>
+        
     </body>
 </html>

@@ -7,8 +7,6 @@ package com.eggnews.eggnews.controller;
 
 import com.eggnews.eggnews.service.UserService;
 import exception.AppException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -46,8 +44,11 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String logIn() {
-        return "logIn.html";
+    public String logIn(@RequestParam(required=false) String error, ModelMap model) {
+        if(error != null){
+            model.put("error", "Wrong email or password");
+        }
+        return "login.html";
     }
 
     @PostMapping("/loginChek")
@@ -57,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping("/loged")
-    public String loged() {
+    public String loged(ModelMap model) {
         return "index.html";
     }
     

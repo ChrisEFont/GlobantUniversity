@@ -8,43 +8,13 @@ and open the template in the editor.
     
     <head th:replace="/fragments/head :: head"></head>
 
-    <body>
-
+    <body id="admin">
         <header th:replace="/fragments/header :: header"></header>
-        <nav th:replace="fragments/navbar :: nav"></nav>        
+        <nav th:replace="/fragments/navbar :: nav"></nav>        
         
         <div id="adminView">
-            <section id="noticeSection">
-                <article class="card border-warning mb-3"  style="width: 18rem;"
-                         th:each="notice : ${notices}"
-                         th:value="${notice.id}"                         
-                         >
-                    <span th:text="${notice.noticeDate}" type="text" name="noticeText"></span>
-                    <h6 th:text="${notice.title}" type="text" name="noticeText"></h6>
-                    <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>
-                    <br>
-                    <div id="noticeBtn">
-                        <p readonline class="form-group" th:text="${notice.id}"></p>
-                        <form action="/admin/editNotice">                            
-                            <button type="submit" class="btn btn-info" name="id" th:value="${notice.id}">EDIT</button>               
-                        </form>
-                        <form action="/admin/deleteNotice">
-                            <button type="submit" class="btn btn-danger" name="id" th:value="${notice.id}">DELETE</button>                            
-                        </form>                                               
-                    </div>
-                </article>
-            </section>
-            <section>
-                <span>Crear una nueva noticia</span>
-                <form action="/admin/addNotice" method="POST">
-                    <div class="form-group">
-                        <input type="text" class="form-group" name="title" placeholder="Título"><br>
-                        <textarea class="form-group" name="text" placeholder="Texto" maxlength="255"></textarea><br> 
-                        <input type="checkbox" name="visible" class="form-check-input"><span> Visible </span><br> 
-                        <button type="submit" class="btn btn-primary">Publicar</button>                   
-                    </div>               
-                </form>
-            </section>
+            <section th:replace="/fragments/noticeadmin :: section"></section>
+            <section th:replace="/fragments/noticeform :: section"></section>
         </div>
     </body>
 </html>
