@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -11,12 +7,12 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="/admin/saveChanges" method="POST">       
+        <form action="/admin/save-changes" method="POST">       
             <div class="form-group">
                 
                 <input type="text" class="form-group" name="title" placeholder="Título" th:value="${notice.title}"><br>
                 <textarea class="form-group" name="text" placeholder="Texto" maxlength="255" th:text="${notice.noticeText}"></textarea><br> 
-                <input type="checkbox" name="visible" class="form-check-input"><span> Visible </span><br>
+                <input type="checkbox" name="visible" class="form-check-input" th:checked="${notice.visible}"><span> Visible </span><br>
                 <button type="submit" class="btn btn-primary" name="id" th:value="${notice.id}" th:text="${notice.id}"></button>
             </div>               
         </form>

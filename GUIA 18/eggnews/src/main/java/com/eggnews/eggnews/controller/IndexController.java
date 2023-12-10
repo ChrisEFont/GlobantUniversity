@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.eggnews.eggnews.controller;
 
 import com.eggnews.eggnews.entity.Notice;
@@ -26,7 +21,6 @@ public class IndexController {
     
     @GetMapping("")
     public String index(ModelMap model) {
-        model.put("place", "home");
         List<Notice> notices = noticeService.getNotices();
         model.addAttribute("notices", notices);
         return "index.html";

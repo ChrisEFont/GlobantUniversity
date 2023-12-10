@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
 
     <head th:replace="/fragments/head :: head"></head>
@@ -23,7 +19,7 @@ and open the template in the editor.
         </div>
 
 
-        <form th:action="@{/loginCheck}" method="POST">
+        <form th:action="@{/login-check}" method="POST">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

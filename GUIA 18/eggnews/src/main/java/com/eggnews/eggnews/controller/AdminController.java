@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.eggnews.eggnews.controller;
 
 import com.eggnews.eggnews.entity.Notice;
@@ -33,10 +28,10 @@ public class AdminController {
         model.put("place", "admin");
         List<Notice> notices = noticeService.getNotices();
         model.addAttribute("notices", notices);
-        return "noticeform.html";
+        return "notice_form.html";
     }
     
-    @PostMapping("/addNotice")
+    @PostMapping("/add-notice")
     public String addNotice(@RequestParam String title, String text, String visible){
         if(visible != null){
             noticeService.createNotice(title, text, true); 
@@ -46,15 +41,15 @@ public class AdminController {
         return "redirect:/index/";
     }
     
-    @GetMapping("/editNotice")
+    @GetMapping("/edit-notice")
     public String editNotice(Integer id, ModelMap model) {
         Notice notice = noticeService.getNoticeById(id);
         System.out.println(id);
         model.addAttribute(notice);
-        return "editNotice.html";
+        return "edit_notice.html";
     }
     
-    @PostMapping("/saveChanges")
+    @PostMapping("/save-changes")
     public String saveChanges(@RequestParam Integer id, String title, String text, String visible) {
         System.out.println(title);
         System.out.println(visible);
@@ -67,13 +62,11 @@ public class AdminController {
         return "redirect:/index/";
     }
     
-    @GetMapping("/deleteNotice")
+    @GetMapping("/delete-notice")
     public String deleteNotice(Integer id, ModelMap model) {
         System.out.println(id);
         noticeService.deleteNotice(id);
         return "redirect:/index/";
-    }
-    
-    
+    }    
     
 }

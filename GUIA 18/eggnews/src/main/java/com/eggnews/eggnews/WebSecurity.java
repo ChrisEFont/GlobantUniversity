@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.eggnews.eggnews;
 
 import com.eggnews.eggnews.service.UserService;
@@ -45,10 +40,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                 .permitAll()
             .and().formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/loginCheck")
+                .loginProcessingUrl("/login-check")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/admin")
+                .defaultSuccessUrl("/index/")
                 .permitAll()
             .and().logout()
                 .logoutUrl("/logout")

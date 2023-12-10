@@ -8,6 +8,6 @@
         <h6 th:text="${notice.title}" type="text" name="noticeText"></h6>
         <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>
         <br>
-        <div th:replace="/fragments/noticecontrol::div" sec:authorize="hasRole('ROLE_ADMIN')"></div>        
+        <div th:replace="/fragments/notice_control::div" sec:authorize="hasRole('ROLE_ADMIN')"></div>        
     </article>            
-</section>   
+</section>

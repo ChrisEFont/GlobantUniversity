@@ -9,5 +9,4 @@ public class EggnewsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EggnewsApplication.class, args);
 	}
-
 }

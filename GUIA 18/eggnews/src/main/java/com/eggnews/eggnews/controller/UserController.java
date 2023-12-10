@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.eggnews.eggnews.controller;
 
 import com.eggnews.eggnews.service.UserService;
@@ -25,7 +20,7 @@ public class UserController {
     
     @GetMapping("/sign-up")
     public String signIn() {
-        return "signIn.html";
+        return "sign_up.html";
     }
 
     @PostMapping("/register")
@@ -34,12 +29,12 @@ public class UserController {
         try {
             userService.register(userName, email, password, passwordVerification);
             model.put("succes", "User has benn created succesfully");
-            return "redirect:/index";
+            return "redirect:/index/";
         } catch (AppException ex) {
             model.put("userName", userName);
             model.put("email", email);
             model.put("error", ex.getMessage());
-            return "signIn.html";
+            return "sign_up.html";
         }        
     }
 
@@ -49,12 +44,6 @@ public class UserController {
             model.put("error", "Wrong email or password");
         }
         return "login.html";
-    }
-
-    @PostMapping("/loginChek")
-    public String logincheck(@RequestParam String email, @RequestParam String password, ModelMap model) {
-        System.out.println(email);
-        return "index.html";
     }
 
     @GetMapping("/loged")

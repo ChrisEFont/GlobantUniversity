@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.eggnews.eggnews.service;
 
 import com.eggnews.eggnews.entity.Notice;
@@ -50,14 +45,7 @@ public class NoticeService {
     @Transactional    
     public void editNotice(int id, String title, String text, Boolean visible) {
         
-        Optional<Notice> response = noticeRepository.findById(id);
-        
-        System.out.println("**************Service***************");
-        System.out.println(id);
-        System.out.println(title);
-        System.out.println(text);
-        System.out.println(visible);
-        
+        Optional<Notice> response = noticeRepository.findById(id);       
         
         if(response.isPresent()){
            Notice notice = response.get();
@@ -70,8 +58,6 @@ public class NoticeService {
 
     @Transactional
     public void deleteNotice(int id){
-        
-        System.out.println("Service");
         
         Optional<Notice> response = noticeRepository.findById(id);
         
