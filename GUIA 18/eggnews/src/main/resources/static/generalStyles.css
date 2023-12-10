@@ -2,16 +2,16 @@ body{
     align-items: center;
     flex-direction: column; 
     justify-content: center;
-    border-style: solid;
-    border-width: 3px;
+/*    background: rgb(2,0,36);*/
+/*    background: linear-gradient(122deg, rgba(2,0,36,1) 0%, rgba(87,87,134,1) 20%, rgba(255,227,227,1) 50%, rgba(215,230,255,1) 100%);*/
+
 }
 
 header{
     padding: 1rem;
     text-align: center;
     color: darkgray;
-    background: rgb(2,0,36);
-    background: linear-gradient(122deg, rgba(2,0,36,1) 0%, rgba(87,87,134,1) 20%, rgba(255,227,227,1) 50%, rgba(215,230,255,1) 100%);
+
 }
 
 header h2{

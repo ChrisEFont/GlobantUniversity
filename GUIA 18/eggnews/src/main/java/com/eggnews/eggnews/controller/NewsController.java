@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class NewsController {
     
     @Autowired
@@ -28,11 +28,8 @@ public class NewsController {
     @Autowired
     private UserService userService;
     
-    @GetMapping("/")
+    @GetMapping()
     public String index(ModelMap model){
-        return "redirect:/index";        
-    }
-
-
-    
+        return "redirect:/index/";        
+    }   
 }

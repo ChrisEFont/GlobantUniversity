@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author chris
  */
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/index/")
 public class IndexController {
     
     @Autowired NoticeService noticeService;

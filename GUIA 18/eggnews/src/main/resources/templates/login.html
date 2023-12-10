@@ -5,28 +5,37 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+
+    <head th:replace="/fragments/head :: head"></head>
+    <nav th:replace="/fragments/navbar :: nav"></nav>
+
     <body>
+        
+        <header th:replace="/fragments/header :: header"></header>
         <h1>Ingresar</h1>
 
-        <form th:action="@{/loginCheck}" method="POST">
-            <label for="email">email:</label>
-            <input type="text" id="email" name="email"><br><br>
-            <label for="password">password:</label>
-            <input type="text" id="password" name="password"><br><br>
-            <input type="submit">
-        </form>
 
-        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+        <div th:if="${error != null}" class="alert alert-danger d-flex align-items-center">
             <div class="card-body">
                 <h5 class="card-title">Error!</h5>
                 <p class="card-text" th:text="${error}"></p>
             </div>
         </div>
+
+
+        <form th:action="@{/loginCheck}" method="POST">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
         
     </body>
+    
 </html>

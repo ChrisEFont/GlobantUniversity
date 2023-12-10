@@ -28,12 +28,12 @@ public class AdminController {
     
     @Autowired NoticeService noticeService;
     
-    @GetMapping("/")
+    @GetMapping("/new")
     public String adminPanel(ModelMap model) {
         model.put("place", "admin");
         List<Notice> notices = noticeService.getNotices();
         model.addAttribute("notices", notices);
-        return "adminPanel.html";
+        return "noticeform.html";
     }
     
     @PostMapping("/addNotice")
@@ -43,7 +43,7 @@ public class AdminController {
         }else{
             noticeService.createNotice(title, text, false); 
         }
-        return "adminPanel.html";
+        return "redirect:/index/";
     }
     
     @GetMapping("/editNotice")
@@ -57,20 +57,21 @@ public class AdminController {
     @PostMapping("/saveChanges")
     public String saveChanges(@RequestParam Integer id, String title, String text, String visible) {
         System.out.println(title);
+        System.out.println(visible);
 
         if (visible != null) {
             noticeService.editNotice(id, title, text, true);
         } else {
             noticeService.editNotice(id, title, text, false);
         }
-        return "redirect:/admin/";
+        return "redirect:/index/";
     }
     
-    @GetMapping("/admin/deleteNotice")
+    @GetMapping("/deleteNotice")
     public String deleteNotice(Integer id, ModelMap model) {
         System.out.println(id);
         noticeService.deleteNotice(id);
-        return "adminPanel.html";
+        return "redirect:/index/";
     }
     
     
