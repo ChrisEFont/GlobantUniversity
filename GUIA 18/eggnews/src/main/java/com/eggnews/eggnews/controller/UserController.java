@@ -29,7 +29,7 @@ public class UserController {
         try {
             userService.register(userName, email, password, passwordVerification);
             model.put("succes", "User has benn created succesfully");
-            return "redirect:/index/";
+            return "login.html";
         } catch (AppException ex) {
             model.put("userName", userName);
             model.put("email", email);

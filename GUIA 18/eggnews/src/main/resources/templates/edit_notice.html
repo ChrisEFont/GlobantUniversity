@@ -19,7 +19,8 @@
                         <input type="text" class="form-control" name="title" placeholder="Título" th:value="${notice.title}"><br>
                         <textarea class="form-control" name="text" placeholder="Texto" maxlength="255" th:text="${notice.noticeText}"></textarea><br> 
                         <input type="checkbox" name="visible" class="form-check-input" th:checked="${notice.visible}"><span> Visible </span><br>
-                        <button type="submit" class="btn btn-primary" name="id" th:value="${notice.id}" style="margin: 10px;">SAVE</button>                
+                        <button type="submit" class="btn btn-primary" name="id" th:value="${notice.id}" style="margin: 10px;">SAVE</button>
+                        <a class="btn btn-primary" href="/index/">CANCEL</a>
                     </div>               
                 </form>
 

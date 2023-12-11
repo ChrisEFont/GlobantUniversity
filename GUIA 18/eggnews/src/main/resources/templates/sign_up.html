@@ -5,26 +5,44 @@
     <head th:replace="/fragments/head :: head"></head>
 
     <body>
+        <header th:replace="/fragments/header :: header"></header>
         <h1>Registrar Usuario</h1>
 
-        <form th:action="@{/register}" method="POST">
-            <label for="name">name:</label>
-            <input type="text" id="name" name="userName" th:value="${userName}"><br><br>
-            <label for="email">email:</label>
-            <input type="text" id="email" name="email" th:value="${email}"><br><br>
-            <label for="password">password:</label>
-            <input type="text" id="password" name="password" th:value="${password}"><br><br>
-            <label for="passwordVerification">password:</label>
-            <input type="text" id="passwordVerification" name="passwordVerification" th:value="${passwordVerification}"><br><br>
-            <input type="submit">
-        </form>
-
-        <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
+        <div th:if="${error != null}" class="alert alert-danger d-flex align-items-center" >
             <div class="card-body">
                 <h5 class="card-title">Error!</h5>
                 <p class="card-text" th:text="${error}"></p>
             </div>
         </div>
+
+        <div th:if="${succes != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+            <div class="card-body">
+                <h5 class="card-title">Exito!</h5>
+                <p class="card-text" th:text="${succes}"></p>
+            </div>
+        </div>
+
+        <form th:action="@{/register}" method="POST">
+            <div class="mb-3">
+                <label for="userName" class="form-label" >Your name</label>
+                <input name="userName" type="text" class="form-control" id="userName" th:value="${userName}">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:value="${email}">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" th:value="${password}">
+                <label for="exampleInputPassword1" class="form-label">Repeat password</label>
+                <input name="passwordVerification" type="password" class="form-control" id="exampleInputPassword1" th:value="${passwordVerification}">
+            </div>
+            <button type="submit" class="btn btn-primary">REGISTER</button>
+            <a class="btn btn-primary" href="/login" sec:authorize="isAnonymous()">CANCEL</a>
+        </form>
 
         <div th:if="${succes != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
             <div class="card-body">

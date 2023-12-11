@@ -20,6 +20,13 @@
                 </div>
             </div>
 
+            <div th:if="${succes != null}" class="alert alert-success d-flex align-items-center" role="alert">
+                <div class="card-body">
+                    <h5 class="card-title">Succes!</h5>
+                    <p class="card-text" th:text="${succes}"></p>
+                </div>
+            </div>
+
 
             <form th:action="@{/login-check}" method="POST">
                 <div class="mb-3">
