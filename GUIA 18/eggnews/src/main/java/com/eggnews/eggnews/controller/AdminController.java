@@ -25,9 +25,9 @@ public class AdminController {
     
     @GetMapping("/new")
     public String adminPanel(ModelMap model) {
-        model.put("place", "admin");
+        model.put("place", "new");
         List<Notice> notices = noticeService.getNotices();
-        model.addAttribute("notices", notices);
+        model.addAttribute("notices", notices);        
         return "notice_form.html";
     }
     

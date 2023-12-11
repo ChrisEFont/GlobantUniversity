@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-<section>
-    <span>Crear una nueva noticia</span>
-    <form action="/admin/add-notice" method="POST">
-        <div class="mb-3">
-            <input type="text" class="form-control" name="title" placeholder="Título"><br>
-            <textarea class="form-control" name="text" placeholder="Texto" maxlength="255"></textarea><br> 
-            <input type="checkbox" name="visible" class="form-check-input"><span> Visible </span><br> 
-            <button type="submit" class="btn btn-primary">Publicar</button>                   
-        </div>               
-    </form>
-</section>
+
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <div class="noticeForm">
+
+            <header th:replace="/fragments/header :: header"></header>
+            <nav th:replace="fragments/navbar :: nav"></nav>
+
+            <section>
+                <span>Crear una nueva noticia</span>
+                <form action="/admin/add-notice" method="POST" style="width: 100%">
+
+                    <input type="text" class="form-control" name="title" placeholder="Título" ><br>
+                    <textarea class="form-control" name="text" placeholder="Texto" maxlength="555"></textarea><br> 
+                    <input type="checkbox" name="visible" class="form-check-input"><span> Visible </span><br> 
+                    <button type="submit" class="btn btn-primary" style="margin: 10px;">Publicar</button> 
+             
+                </form>
+            </section>
+
+        </div>
+
+    </body>
+
 </html>

@@ -1,5 +1,7 @@
-<div id="noticeBtn">
-    <p readonline class="form-group" th:text="${notice.id}"></p>
+<div class="noticeContol">
+    <p>Id:</p>
+    <p readonline class="form-group" th:text="${notice.id}" Style="font-weight: bold"></p>
+    <p>Visible:</p>
     <input type="checkbox" name="visible" class="form-check-input" th:checked="${notice.visible}" disabled="disabled"><span></span><br>
     <form action="/admin/edit-notice">                            
         <button type="submit" class="btn btn-info" name="id" th:value="${notice.id}">EDIT</button>               

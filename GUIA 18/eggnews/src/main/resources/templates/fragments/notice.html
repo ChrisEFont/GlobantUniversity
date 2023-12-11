@@ -1,12 +1,14 @@
 <section>
-    <article class="card border-warning mb-3"  style="width: 18rem;"
+    <article class="card border-warning mb-3" style="width: 100%"
              th:each="notice : ${notices}"
              th:value="${notice.id}"
              th:if="${notice.visible == true or #authorization.expression('hasRole(''ROLE_ADMIN'')')}"
              >
-        <span th:text="${notice.noticeDate}" type="text" name="noticeText"></span>
-        <h6 th:text="${notice.title}" type="text" name="noticeText"></h6>
-        <p th:text="${notice.noticeText}" type="text" name="noticeText"></p>
+        <div class="card-header" th:text="${notice.noticeDate}" type="text" name="noticeDate"></div>
+        <div class="card-body">
+            <h5 class="card-title" th:text="${notice.title}" type="text" name="noticeTitle"></h5>
+            <p class="card-text" th:text="${notice.noticeText}" type="text" name="noticeText"></p>
+        </div>
         <br>
         <div th:replace="/fragments/notice_control::div" sec:authorize="hasRole('ROLE_ADMIN')"></div>        
     </article>            

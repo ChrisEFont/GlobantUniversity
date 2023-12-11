@@ -1,6 +1,7 @@
 package com.eggnews.eggnews.entity;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -80,4 +81,11 @@ public class Notice {
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
+    
+    public static Comparator<Notice> compareId = new Comparator<Notice>(){
+        @Override
+        public int compare(Notice n1, Notice n2){
+            return Integer.compare(n2.getId(), n1.getId());
+        }
+    };
 }

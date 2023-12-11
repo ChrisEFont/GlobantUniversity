@@ -1,17 +1,18 @@
 body{
+    display: flex;
     align-items: center;
     flex-direction: column; 
     justify-content: center;
-/*    background: rgb(2,0,36);*/
-/*    background: linear-gradient(122deg, rgba(2,0,36,1) 0%, rgba(87,87,134,1) 20%, rgba(255,227,227,1) 50%, rgba(215,230,255,1) 100%);*/
-
+    background: rgb(2,0,36);
+    background: linear-gradient(122deg, rgba(2,0,36,1) 0%, rgba(87,87,134,1) 20%, rgba(255,227,227,1) 50%, rgba(215,230,255,1) 100%);
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 header{
     padding: 1rem;
     text-align: center;
     color: darkgray;
-
 }
 
 header h2{
@@ -20,12 +21,56 @@ header h2{
     color: #0A2E42;
 }
 
+.login{
+    background: hsla(257, 100%, 90%, 0.4);
+    max-width: 300px;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.home{
+    background: hsla(257, 100%, 90%, 0.2);
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 1em;
+}
+
 section{
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1em;
 }
 
+article{    
+    box-shadow: 11px 9px 19px 1px rgba(0,0,0,0.50);
+}
+
+.noticeContol{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    max-width: 330px;
+}
+
+.noticeForm{
+    background: hsla(257, 100%, 90%, 0.2);
+    padding: 5px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 1rem;
+    border-radius: 1em;
+}
+
+.editForm{
+    background: hsla(257, 100%, 90%, 0.2);
+    padding: 5px;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 1rem;
+    border-radius: 1em;
+}
 
 

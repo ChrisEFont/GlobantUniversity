@@ -22,7 +22,9 @@ public class IndexController {
     @GetMapping("")
     public String index(ModelMap model) {
         List<Notice> notices = noticeService.getNotices();
+        notices.sort(Notice.compareId);
         model.addAttribute("notices", notices);
+        model.put("place", "home");
         return "index.html";
     }
     

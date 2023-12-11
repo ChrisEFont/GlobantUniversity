@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+
+    <head th:replace="/fragments/head :: head"></head>
+
     <body>
-        <form action="/admin/save-changes" method="POST">       
-            <div class="form-group">
-                
-                <input type="text" class="form-group" name="title" placeholder="Título" th:value="${notice.title}"><br>
-                <textarea class="form-group" name="text" placeholder="Texto" maxlength="255" th:text="${notice.noticeText}"></textarea><br> 
-                <input type="checkbox" name="visible" class="form-check-input" th:checked="${notice.visible}"><span> Visible </span><br>
-                <button type="submit" class="btn btn-primary" name="id" th:value="${notice.id}" th:text="${notice.id}"></button>
-            </div>               
-        </form>
+
+        <div class="editForm">
+
+            <header th:replace="/fragments/header :: header"></header>
+            <nav th:replace="fragments/navbar :: nav"></nav>
+
+            <section>
+
+                <form action="/admin/save-changes" method="POST" style="width: 100%">
+                    <h4>Editar Noticia</h4>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="title" placeholder="Título" th:value="${notice.title}"><br>
+                        <textarea class="form-control" name="text" placeholder="Texto" maxlength="255" th:text="${notice.noticeText}"></textarea><br> 
+                        <input type="checkbox" name="visible" class="form-check-input" th:checked="${notice.visible}"><span> Visible </span><br>
+                        <button type="submit" class="btn btn-primary" name="id" th:value="${notice.id}" style="margin: 10px;">SAVE</button>                
+                    </div>               
+                </form>
+
+            </section>
+
+        </div>
+
     </body>
+    
 </html>
